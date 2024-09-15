@@ -1,0 +1,10 @@
+<nav class="fixed opacity-90 right-0 mx-24 my-4">
+  <button class="mx-auto" (click)="darkMode.set(!darkMode())">
+    <svg-icon
+      [src]="darkMode() ? 'public/assets/sun.svg' : 'public/assets/moon.svg'"
+      class="fill-zinc-950 dark:fill-zinc-200 [&>svg]:w-6 [&>svg]:h-6"
+    />
+  </button>
+</nav>
+
+<router-outlet />
