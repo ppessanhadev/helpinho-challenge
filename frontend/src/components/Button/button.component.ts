@@ -1,5 +1,5 @@
 import { tv } from 'tailwind-variants';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { SvgIconComponent } from 'angular-svg-icon';
 
 const button = tv({
@@ -24,8 +24,12 @@ const button = tv({
     size: {
       sm: 'text-sm py-2 px-3.5',
       md: 'text-sm py-2.5 px-4',
-      lg: 'text-base py-2.5 px-4.5',
+      lg: 'text-base py-2.5 px-[1.125rem]',
       xl: 'text-base py-3 px-5',
+      'icon-sm': 'p-2',
+      'icon-md': 'p-2.5',
+      'icon-lg': 'p-3',
+      'icon-xl': 'p-3.5',
     },
   },
 });
@@ -54,10 +58,19 @@ type Colors =
 export class ButtonComponent implements OnInit {
   public definedClass!: string;
 
+  @ViewChild('children') children!: ElementRef;
+  @Input() class = '';
+  @Input() icon = '';
+  @Input() prefix = '';
+  @Input() suffix = '';
   @Input() size: Sizes = 'md';
   @Input() color: Colors = 'primary';
 
   ngOnInit() {
-    this.definedClass = button({ size: this.size, color: this.color });
+    this.definedClass = button({
+      size: this.icon ? `icon-${this.size}` : this.size,
+      color: this.color,
+      class: this.class,
+    });
   }
 }

@@ -1,11 +1,12 @@
 import { RouterOutlet } from '@angular/router';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { Component, effect, HostBinding, signal } from '@angular/core';
+import { ButtonComponent } from '../components/Button/button.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SvgIconComponent],
+  imports: [RouterOutlet, SvgIconComponent, ButtonComponent],
   templateUrl: './base.component.html',
 })
 export class BaseLayoutComponent {
@@ -35,5 +36,9 @@ export class BaseLayoutComponent {
     } else {
       this.darkMode.set(false);
     }
+  }
+
+  public onClick() {
+    alert('EPAAAA!!');
   }
 }

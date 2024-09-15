@@ -1,1 +1,21 @@
-<button [className]="definedClass">Button CTA</button>
+<button [className]="definedClass">
+  @if (!icon && prefix) {
+    <div class="h-6 w-6 mr-2">
+      <svg-icon [src]="prefix" class="[&>svg]:w-6 [&>svg]:h-6 fill-white" />
+    </div>
+  }
+
+  @if (icon) {
+    <div class="h-6 w-6">
+      <svg-icon [src]="icon" class="[&>svg]:w-6 [&>svg]:h-6 fill-white" />
+    </div>
+  } @else {
+    <ng-content />
+  }
+
+  @if (!icon && suffix) {
+    <div class="h-6 w-6 ml-2">
+      <svg-icon [src]="suffix" class="[&>svg]:w-6 [&>svg]:h-6 fill-white" />
+    </div>
+  }
+</button>
