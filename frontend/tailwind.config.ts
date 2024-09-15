@@ -3,7 +3,12 @@ module.exports = {
   darkMode: 'class',
   content: ['./src/**/*.{html,ts}'],
   theme: {
+    fontFamily: {
+      sans: ['"Inter"', 'sans-serif'],
+    },
     colors: {
+      white: 'var(--color-white)',
+      black: 'var(--color-black)',
       neutral: {
         50: 'var(--color-neutral-50)',
         100: 'var(--color-neutral-100)',
