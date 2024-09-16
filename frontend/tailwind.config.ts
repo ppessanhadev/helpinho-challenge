@@ -9,6 +9,7 @@ module.exports = {
     fontFamily: {
       sans: ['"Inter"', 'sans-serif'],
       open: ['"Open Sans"', 'sans-serif'],
+      mont: ['"Montserrat"', 'sans-serif'],
     },
     colors: {
       white: 'var(--color-white)',

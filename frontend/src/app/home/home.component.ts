@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from '../../components/Header/header.component';
-import { SvgIconComponent } from 'angular-svg-icon';
-import { ButtonComponent } from '../../components/Button/button.component';
+import { HeaderComponent } from '@/components/Header/header.component';
+import { HomeBannerComponent } from '@/components/HomeBanner/home-banner.component';
+import { HomeStagesComponent } from '@/components/HomeStages/home-stages.component';
 
 @Component({
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, SvgIconComponent, ButtonComponent],
+  imports: [RouterOutlet, HeaderComponent, HomeBannerComponent, HomeStagesComponent],
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
