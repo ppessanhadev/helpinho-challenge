@@ -1,0 +1,27 @@
+<section class="flex my-16 justify-center gap-4">
+  <div
+    class="rounded-lg border border-neutral-300 px-4 py-5 flex items-center align-center gap-2 max-w-[800px] w-full"
+  >
+    <svg-icon src="public/assets/search-icon.svg" class="w-5 h-5" />
+
+    <input
+      placeholder="Quem vamos ajudar hoje?"
+      class="text-base text-neutral-500 w-full outline-none"
+    />
+  </div>
+
+  <div class="relative max-w-80 w-full">
+    <select
+      class="text-base text-neutral-400 outline-none rounded-lg border border-neutral-300 px-4 py-5 w-full cursor-pointer appearance-none"
+    >
+      <option value="" class="text-neutral-200" disabled selected>Escolha uma categoria</option>
+      <option value="games">Games</option>
+      <option value="health">Saúde</option>
+    </select>
+
+    <svg-icon
+      src="public/assets/chevron-down.svg"
+      class="absolute align-center h-full inline-flex items-center right-4 stroke-neutral-400 cursor-pointer"
+    />
+  </div>
+</section>
