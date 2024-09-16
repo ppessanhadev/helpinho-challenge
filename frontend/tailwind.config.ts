@@ -3,8 +3,12 @@ module.exports = {
   darkMode: 'class',
   content: ['./src/**/*.{html,ts}'],
   theme: {
+    backgroundImage: {
+      texture: `url('public/assets/background-home.png')`,
+    },
     fontFamily: {
       sans: ['"Inter"', 'sans-serif'],
+      open: ['"Open Sans"', 'sans-serif'],
     },
     colors: {
       white: 'var(--color-white)',

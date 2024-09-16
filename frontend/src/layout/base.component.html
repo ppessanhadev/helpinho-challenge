@@ -1,16 +1,1 @@
-<nav class="fixed opacity-90 right-0 mx-24 my-4">
-  <app-base-button
-    (click)="onClick()"
-    class="flex flex-row items-center justify-center"
-    icon="public/assets/moon.svg"
-  />
-
-  <button class="mx-auto" (click)="darkMode.set(!darkMode())">
-    <svg-icon
-      [src]="darkMode() ? 'public/assets/sun.svg' : 'public/assets/moon.svg'"
-      class="fill-neutral-950 [&>svg]:w-6 [&>svg]:h-6"
-    />
-  </button>
-</nav>
-
 <router-outlet />

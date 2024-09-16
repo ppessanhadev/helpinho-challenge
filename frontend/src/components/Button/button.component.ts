@@ -16,10 +16,10 @@ const button = tv({
       'success-tonal': 'bg-success-100 dark:bg-success-900 text-secondary-500',
       'warning-tonal': 'bg-warning-100 dark:bg-warning-900 text-warning-600 dark:text-warning-400',
 
-      'primary-plain': 'bg-none text-primary-500',
-      'secondary-plain': 'bg-none text-secondary-500',
-      'success-plain': 'bg-none text-secondary-500',
-      'warning-plain': 'bg-none text-warning-600',
+      'primary-white': 'bg-white text-primary-500',
+      'secondary-white': 'bg-white text-secondary-500',
+      'success-white': 'bg-white text-secondary-500',
+      'warning-white': 'bg-white text-warning-600 dark:"text-warning-400',
     },
     size: {
       sm: 'text-sm py-2 px-3.5',
@@ -44,10 +44,10 @@ type Colors =
   | 'secondary-tonal'
   | 'success-tonal'
   | 'warning-tonal'
-  | 'primary-plain'
-  | 'secondary-plain'
-  | 'success-plain'
-  | 'warning-plain';
+  | 'primary-white'
+  | 'secondary-white'
+  | 'success-white'
+  | 'warning-white';
 
 @Component({
   selector: 'app-base-button',
