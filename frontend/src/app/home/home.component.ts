@@ -9,6 +9,4 @@ import { HomeStagesComponent } from '@/components/HomeStages/home-stages.compone
   imports: [RouterOutlet, HeaderComponent, HomeBannerComponent, HomeStagesComponent],
   templateUrl: './home.component.html',
 })
-export class HomeComponent {
-  title = 'helpinho';
-}
+export class HomeComponent {}
