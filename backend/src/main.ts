@@ -1,7 +1,10 @@
 import helmet from 'helmet';
 import { NestFactory } from '@nestjs/core';
+import { Callback, Context, Handler } from 'aws-lambda';
+import { configure } from '@codegenie/serverless-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { INestApplication, Logger, ValidationPipe, VersioningType } from '@nestjs/common';
+
 import { HttpExceptionFilter, validationPipeOptions } from '@core';
 import { ControllerModule } from '@controllers/controller.module';
 
@@ -34,16 +37,24 @@ const serverConfig = (app: INestApplication) => {
     .enableCors();
 };
 
+const application = async () => {
+  const app = await NestFactory.create(ControllerModule);
+
+  serverConfig(app);
+  swaggerConfig(app);
+
+  return { app, serverless: configure({ app: app.getHttpAdapter().getInstance() }) };
+};
+
 /**
  * Starts nest server with route versioning and swagger
  * @param app Instance from nest application
  */
 export const startServer = async () => {
-  const app = await NestFactory.create(ControllerModule);
-  const port = process.env.PORT || 4000;
+  if (process.env.API_SERVERLESS) return;
 
-  serverConfig(app);
-  swaggerConfig(app);
+  const port = process.env.PORT || 4000;
+  const { app } = await application();
 
   await app.listen(port);
 
@@ -52,4 +63,16 @@ export const startServer = async () => {
 
   return app;
 };
+
+let server: Handler;
+
+export async function lambda(event: any, ctx: Context, cb: Callback) {
+  if (!server) {
+    const { serverless } = await application();
+    server = serverless;
+  }
+
+  return server(event, ctx, cb);
+}
+
 startServer();
