@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '@/components/Header/header.component';
+import { FooterComponent } from '@/components/Footer/footer.component';
 import { HomeCardComponent } from '@/components/HomeCard/home-card.component';
 import { HomeBannerComponent } from '@/components/HomeBanner/home-banner.component';
 import { HomeStagesComponent } from '@/components/HomeStages/home-stages.component';
@@ -15,6 +16,7 @@ import { HomeSearchComponent } from '@/components/HomeSearch/home-search.compone
     HomeStagesComponent,
     HomeSearchComponent,
     HomeCardComponent,
+    FooterComponent,
   ],
   templateUrl: './home.component.html',
 })
