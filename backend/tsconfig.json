@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "types": ["vitest/globals"],
+    "paths": {
+      "@controllers/*": ["src/presentation/controllers/*"],
+      "@presenters/*": ["src/presentation/presenters/*"],
+      "@responses/*": ["src/presentation/responses/*"],
+      "@middlewares/*": ["src/application/middlewares/*"],
+      "@pipes/*": ["src/application/pipes/*"],
+      "@use-cases/*": ["src/application/use-cases/*"],
+      "@mappers/*": ["src/application/mappers/*"],
+      "@validators/*": ["src/application/validators/*"],
+      "@domain/*": ["src/domain/*"],
+      "@repositories/*": ["src/infra/repositories/*"],
+      "@core": ["src/core/index"],
+      "@common": ["src/common/index"]
+    }
+  }
+}

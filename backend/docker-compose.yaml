@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+  database:
+    container_name: database
+    image: postgres:14
+    restart: always
+    environment:
+      - POSTGRES_DB=mydb
+      - POSTGRES_USER=johndoe
+      - POSTGRES_PASSWORD=randompassword
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  db:
+    driver: local
