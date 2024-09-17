@@ -10,4 +10,5 @@ import { SvgIconComponent } from 'angular-svg-icon';
 })
 export class HomeCardDonatorsComponent {
   @Input() donators: Array<string> = Array(15).fill('public/assets/noise.png');
+  @Input() urgency: boolean = false;
 }

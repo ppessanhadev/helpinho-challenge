@@ -1,4 +1,8 @@
-<div>
+<p class="sm:hidden text-primary-600 text-xs mt-4" [ngClass]="{ hidden: urgency }">
+  {{ donators.length }} apoiam esse helpinho
+</p>
+
+<div class="block sm:block" [ngClass]="{ hidden: !urgency }">
   @for (donator of donators; track donator; let i = $index; let count = $count) {
     @if (i < 10) {
       <figure class="w-8 h-8 inline-block" [ngClass]="{ '-ml-2': i > 0 }">

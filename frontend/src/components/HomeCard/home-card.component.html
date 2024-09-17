@@ -22,7 +22,7 @@
       <figcaption
         class="bg-primary-100 text-primary-700 font-bold leading-5 px-3 py-0.5 rounded-xl text-xs ml-auto"
       >
-        Games
+        Saúde
       </figcaption>
     </div>
 
@@ -37,14 +37,14 @@
 
     <div class="px-6 text-center mb-10">
       <button
-        class="rounded-lg bg-primary-800 py-1.5 opacity-50 text-white text-sm w-full cursor-default"
+        class="rounded-lg bg-primary-800 p-1.5 opacity-50 text-white text-sm w-full cursor-default md:line-clamp-1"
       >
         Helpinho urgente validado pela nossa equipe
       </button>
     </div>
 
-    <div class="px-6">
-      <app-home-card-donators />
+    <div class="px-6 pb-8">
+      <app-home-card-donators [urgency]="true" />
     </div>
   </div>
 } @else {
@@ -53,7 +53,7 @@
       <img
         src="public/assets/noise.png"
         alt="Imagem referente ao card de Helpinho"
-        class="rounded-t-3xl max-h-60 w-[384px] object-cover"
+        class="rounded-t-3xl max-h-60 w-full object-cover"
       />
       <figcaption
         class="absolute right-4 bottom-4 bg-primary-100 text-primary-700 font-bold leading-5 px-3 py-0.5 rounded-xl text-xs"

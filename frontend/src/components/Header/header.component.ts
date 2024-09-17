@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { ButtonComponent } from '@/components/Button/button.component';
 
@@ -7,7 +8,7 @@ import { ButtonComponent } from '@/components/Button/button.component';
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
-  imports: [ButtonComponent, SvgIconComponent],
+  imports: [ButtonComponent, SvgIconComponent, CommonModule],
 })
 export class HeaderComponent {
   constructor(private router: Router) {}

@@ -1,26 +1,40 @@
-<article class="flex justify-center items-start mt-32 pb-16 font-open">
-  <dl class="max-w-[650px] ml-8">
-    <ul class="flex gap-1 mb-4 px-3.5 py-4">
-      <li class="flex gap-2 justify-center items-center px-3 py-2 text-neutral-500 text-[17px]">
-        <svg-icon src="public/assets/ok-circle.svg" />
-        Registro grátis
-      </li>
+<article
+  class="flex flex-col lg:flex-row justify-between lg:justify-center items-start font-open mt-14 lg:pb-12 overflow-x-hidden"
+>
+  <dl class="max-w-80 sm:max-w-[650px] mb-12 lg:mb-0 lg:pl-4 ml-8">
+    <div class="relative inline-flex flex-nowrap -ml-8 sm:-ml-0">
+      <ul
+        class="flex gap-8 items-center justify-center sm:gap-1 mb-4 lg:px-3.5 py-4 animate-infinite-scroll sm:animate-none w-max"
+      >
+        <li
+          class="flex gap-2 justify-center items-center px-3 py-2 text-neutral-500 text-xs sm:text-base bg-primary-100/60 rounded-xl sm:bg-[transparent]"
+        >
+          <svg-icon src="public/assets/ok-circle.svg" class="w-4 h-4" />
+          Registro grátis
+        </li>
 
-      <li class="flex gap-2 justify-center items-center px-3 py-2 text-neutral-500 text-[17px]">
-        <svg-icon src="public/assets/ok-circle.svg" />Sem taxas
-      </li>
+        <li
+          class="flex gap-2 justify-center items-center px-3 py-2 text-neutral-500 text-xs sm:text-base bg-primary-100/60 rounded-xl sm:bg-[transparent]"
+        >
+          <svg-icon src="public/assets/ok-circle.svg" class="w-4 h-4" />
+          Sem taxas
+        </li>
 
-      <li class="flex gap-2 justify-center items-center px-3 py-2 text-neutral-500 text-[17px]">
-        <svg-icon src="public/assets/ok-circle.svg" />Rápido e prático
-      </li>
-    </ul>
+        <li
+          class="flex gap-2 justify-center items-center px-3 py-2 text-neutral-500 text-xs sm:text-base bg-primary-100/60 rounded-xl sm:bg-[transparent]"
+        >
+          <svg-icon src="public/assets/ok-circle.svg" class="w-4 h-4" />
+          Rápido e prático
+        </li>
+      </ul>
+    </div>
 
-    <dt class="text-5xl font-light mb-6">
+    <dt class="sm:text-5xl text-3xl font-light mb-6">
       Faça a diferença com apenas
       <strong class="font-bold text-primary-500">um helpinho</strong>
     </dt>
 
-    <dd class="text-2xl text-neutral-600 max-w-[520px] mb-8">
+    <dd class="sm:text-2xl text-base text-neutral-600 max-w-[520px] mb-8">
       Os helpinho podem parecer pequenos, mas juntos fazem a
       <strong class="font-bold text-primary-500">diferença na vida de todos</strong>
     </dd>
@@ -28,7 +42,15 @@
     <app-base-button size="xl"> Registre-se grátis </app-base-button>
   </dl>
 
-  <aside class="relative -left-20 min-w-max -mr-12">
-    <img src="public/assets/side-home-image.png" alt="Demonstração de pessoas" />
-  </aside>
+  <img
+    src="public/assets/side-home-image.png"
+    class="hidden lg:inline-block relative -right-12 bottom-0 -left-20 -mr-12 max-h-[585px]"
+    alt="Demonstração de pessoas"
+  />
+
+  <img
+    src="public/assets/bottom-home-image.png"
+    class="inline-block lg:hidden self-end"
+    alt="Demonstração de pessoas"
+  />
 </article>

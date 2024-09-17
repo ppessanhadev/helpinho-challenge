@@ -1,22 +1,19 @@
-<header class="px-20 py-5 flex justify-between items-center static">
-  <svg-icon src="public/assets/logo-header.svg" />
+<header class="px-8 md:px-16 lg:px-20 py-5 flex justify-between items-center static">
+  <svg-icon src="public/assets/logo-header.svg" class="hidden sm:inline-block" />
+  <svg-icon src="public/assets/mini-logo.svg" class="sm:hidden inline-block" />
 
-  <nav>
-    <ul class="flex gap-[3.688rem]">
-      <li [class]="selectedPath('/')">
-        <a class="cursor-pointer" href="/"> Home </a>
-      </li>
-      <li [class]="selectedPath('/search')">
-        <a class="cursor-pointer" href="/search"> Pesquisa </a>
-      </li>
-      <li [class]="selectedPath('/about')">
-        <a class="cursor-pointer" href="/about"> Sobre </a>
-      </li>
+  <nav class="hidden md:block">
+    <ul class="flex gap-4 lg:gap-[3.688rem]">
+      <li [class]="selectedPath('/')">Home</li>
+      <li [class]="selectedPath('/search')">Pesquisa</li>
+      <li [class]="selectedPath('/about')">Sobre</li>
     </ul>
   </nav>
 
   <div class="flex gap-2">
-    <app-base-button color="primary-white"> Registre-se grátis </app-base-button>
+    <app-base-button color="primary-tonal">
+      Registre-se <span class="hidden md:inline-block">grátis</span>
+    </app-base-button>
 
     <app-base-button> Login </app-base-button>
   </div>
