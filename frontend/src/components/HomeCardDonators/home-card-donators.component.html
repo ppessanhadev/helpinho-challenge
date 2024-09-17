@@ -1,0 +1,23 @@
+<div>
+  @for (donator of donators; track donator; let i = $index; let count = $count) {
+    @if (i < 10) {
+      <figure class="w-8 h-8 inline-block" [ngClass]="{ '-ml-2': i > 0 }">
+        <img
+          class="rounded-full border-2 border-white"
+          [src]="donator"
+          alt="Imagem de doadores do card"
+        />
+      </figure>
+    }
+  }
+
+  @if (donators.length > 10) {
+    <figure
+      class="w-8 h-8 inline-flex -ml-2 rounded-full border-2 border-white bg-primary-100 justify-center items-center"
+    >
+      <span class="absolute -ml-1 text-primary-500 text-sm font-semibold">
+        +{{ donators.length - 10 }}
+      </span>
+    </figure>
+  }
+</div>

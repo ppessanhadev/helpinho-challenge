@@ -1,0 +1,92 @@
+@if (urgency) {
+  <div
+    class="bg-[url('https://cdn.decornation.in/wp-content/uploads/2020/07/modern-dining-table-chairs.jpg')] md:max-w-96 h-full bg-center rounded-3xl drop-shadow-lg mx-auto mix-blend-overlay text-white"
+  >
+    <img
+      src="public/assets/texture-card.png"
+      class="rounded-3xl absolute -z-10 h-full w-full"
+      alt="Textura para efeito de imagem"
+    />
+
+    <div class="flex gap-2.5 items-center px-6 pt-8">
+      <figure class="w-8 h-8">
+        <img
+          class="rounded-full"
+          src="public/assets/noise.png"
+          alt="Imagem do proprietario do card"
+        />
+      </figure>
+
+      <h4 class="text-sm font-semibold inline-block">Olivia Rhye</h4>
+
+      <figcaption
+        class="bg-primary-100 text-primary-700 font-bold leading-5 px-3 py-0.5 rounded-xl text-xs ml-auto"
+      >
+        Games
+      </figcaption>
+    </div>
+
+    <article class="mt-6 px-6">
+      <h2 class="pb-3 text-2xl font-semibold">Cirurgia urgente</h2>
+      <p class="font-light text-base h-52">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet nibh vel eleifend
+        posuere. Sed ac turpis ut tortor maximus tincidunt non eget ligula. In pretium nulla ante,
+        nec congue diam mattis non.
+      </p>
+    </article>
+
+    <div class="px-6 text-center mb-10">
+      <button
+        class="rounded-lg bg-primary-800 py-1.5 opacity-50 text-white text-sm w-full cursor-default"
+      >
+        Helpinho urgente validado pela nossa equipe
+      </button>
+    </div>
+
+    <div class="px-6">
+      <app-home-card-donators />
+    </div>
+  </div>
+} @else {
+  <div class="bg-white md:max-w-96 rounded-3xl drop-shadow-lg mx-auto">
+    <figure class="relative">
+      <img
+        src="public/assets/noise.png"
+        alt="Imagem referente ao card de Helpinho"
+        class="rounded-t-3xl max-h-60 w-[384px] object-cover"
+      />
+      <figcaption
+        class="absolute right-4 bottom-4 bg-primary-100 text-primary-700 font-bold leading-5 px-3 py-0.5 rounded-xl text-xs"
+      >
+        Games
+      </figcaption>
+    </figure>
+
+    <article class="px-6 pt-4 pb-8">
+      <div class="flex gap-2.5 items-center">
+        <figure class="w-8 h-8">
+          <img
+            class="rounded-full"
+            src="public/assets/noise.png"
+            alt="Imagem do proprietario do card"
+          />
+        </figure>
+
+        <div class="max-h-8">
+          <h4 class="text-sm font-semibold text-neutral-700">Olivia Rhye</h4>
+          <h6 class="text-xs font-normal text-neutral-600">olivia&#64;untitledui.com</h6>
+        </div>
+      </div>
+
+      <dl class="py-4">
+        <dt class="pb-4 font-semibold text-2xl text-neutral-900">Comprar um PS5</dt>
+        <dd class="font-regular text-base text-neutral-600 line-clamp-2">
+          Meu PS2 queimou e preciso comprar um novo, falta R$ 5000 pra comprar um novo modelo mais
+          recente
+        </dd>
+      </dl>
+
+      <app-home-card-donators />
+    </article>
+  </div>
+}

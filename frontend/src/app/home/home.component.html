@@ -6,6 +6,14 @@
   <app-home-stages />
 
   <app-home-search />
+
+  <section class="grid grid-cols-3 justify-center gap-6 max-w-[1280px] px-8 mx-auto">
+    <app-home-card />
+    <app-home-card />
+    <app-home-card />
+    <app-home-card />
+    <app-home-card [urgency]="true" />
+  </section>
 </main>
 
 <router-outlet />

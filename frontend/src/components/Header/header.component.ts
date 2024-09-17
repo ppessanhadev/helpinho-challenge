@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { Component, effect, signal } from '@angular/core';
 import { ButtonComponent } from '@/components/Button/button.component';
 
 @Component({
@@ -10,33 +10,7 @@ import { ButtonComponent } from '@/components/Button/button.component';
   imports: [ButtonComponent, SvgIconComponent],
 })
 export class HeaderComponent {
-  public darkMode = signal<boolean>(false);
-
-  constructor(private router: Router) {
-    if ('theme' in localStorage) {
-      this.darkMode.set(JSON.parse(window.localStorage.getItem('theme') ?? 'false'));
-    } else {
-      this.setSystemTheme();
-    }
-
-    effect(() => {
-      window.localStorage.setItem('theme', JSON.stringify(this.darkMode()));
-      const root = window.document.querySelector('app-root');
-
-      if (this.darkMode()) root?.classList.add('dark');
-      else root?.classList.remove('dark');
-    });
-  }
-
-  private setSystemTheme() {
-    const systemDarkmode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (systemDarkmode) {
-      this.darkMode.set(true);
-    } else {
-      this.darkMode.set(false);
-    }
-  }
+  constructor(private router: Router) {}
 
   public selectedPath(path: string) {
     if (path === this.router.url) {
