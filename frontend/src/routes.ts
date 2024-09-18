@@ -18,6 +18,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'helps',
+    loadComponent: () => import('@/app/helps/helps.component').then((m) => m.HelpsComponent),
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     redirectTo: '/',
   },
