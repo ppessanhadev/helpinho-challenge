@@ -2,7 +2,7 @@
   <svg-icon src="public/assets/logo-header.svg" class="hidden sm:inline-block" />
   <svg-icon src="public/assets/mini-logo.svg" class="sm:hidden inline-block" />
 
-  <nav class="hidden md:block">
+  <nav class="hidden" [ngClass]="{ ' md:block': !hideLinks }">
     <ul class="flex gap-4 lg:gap-[3.688rem]">
       <li>
         <button [class]="selectedPath('/')" (click)="navigateTo('/')">Home</button>

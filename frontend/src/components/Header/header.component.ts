@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SvgIconComponent } from 'angular-svg-icon';
 
@@ -16,6 +16,7 @@ import { UserIconComponent } from '@/components/UserIcon/user-icon.component';
 })
 export class HeaderComponent {
   readonly logged = this.userSignal.select('logged');
+  @Input() hideLinks?: boolean = false;
 
   constructor(
     private router: Router,
