@@ -26,10 +26,10 @@ export class HeaderComponent {
     if (path === this.router.url) {
       return 'text-base text-primary-500 underline underline-offset-8 decoration-2 rounded font-semibold';
     }
-    return 'text-base text-neutral-400 font-semibold';
+    return 'text-base text-neutral-400 font-semibold disabled:opacity-50';
   }
 
-  public navigateToLogin() {
-    this.router.navigate(['login']);
+  public navigateTo(path: string) {
+    this.router.navigate([path]);
   }
 }

@@ -4,9 +4,17 @@
 
   <nav class="hidden md:block">
     <ul class="flex gap-4 lg:gap-[3.688rem]">
-      <li [class]="selectedPath('/')">Home</li>
-      <li [class]="selectedPath('/search')">Pesquisa</li>
-      <li [class]="selectedPath('/about')">Sobre</li>
+      <li>
+        <button [class]="selectedPath('/')" (click)="navigateTo('/')">Home</button>
+      </li>
+
+      <li>
+        <button [class]="selectedPath('/search')" disabled>Pesquisa</button>
+      </li>
+
+      <li>
+        <button [class]="selectedPath('/about')" disabled>Sobre</button>
+      </li>
     </ul>
   </nav>
 
@@ -16,7 +24,7 @@
         Registre-se <span class="hidden md:inline-block">grátis</span>
       </app-base-button>
 
-      <app-base-button (click)="navigateToLogin()"> Login </app-base-button>
+      <app-base-button (click)="navigateTo('login')"> Login </app-base-button>
     } @else {
       <app-user-icon
         name="Olivia Ryem"
