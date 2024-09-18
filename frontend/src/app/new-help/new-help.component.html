@@ -1,7 +1,38 @@
 <main class="h-screen bg-neutral-50">
   <app-header [hideLinks]="true" />
 
-  <section class="w-full pt-6">
+  <section class="w-full pt-6 px-12 sm:px-0">
     <app-new-help-steps />
+  </section>
+
+  <section class="w-full px-12 py-2.5">
+    <div class="bg-white rounded-xl p-6">
+      <dl class="max-w-[500px] mb-6">
+        <dt class="text-xl text-neutral-900 font-bold">
+          Em que categoria se encaixa seu helpinho?
+        </dt>
+
+        <dd class="text-base text-neutral-700 font-light">
+          Escolha pelo menos uma das categorias abaixo que represente seu helpinho.
+        </dd>
+      </dl>
+
+      <ul class="w-full min-h-[500px] flex gap-4 flex-wrap">
+        @for (opt of options; track opt) {
+          <li class="h-fit">
+            <button
+              class="px-12 py-4 border border-neutral-100 rounded-xl text-neutral-700 text-sm font-light"
+            >
+              <figure class="mb-3 flex justify-center items-center">
+                <svg-icon [src]="opt.icon" class="w-12 h-12" />
+              </figure>
+              {{ opt.name }}
+            </button>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div></div>
   </section>
 </main>
