@@ -3,7 +3,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { SvgIconComponent } from 'angular-svg-icon';
 
 const button = tv({
-  base: 'rounded-xl text-white text-sm font-semibold px-2.5 py-4 antiliased hover:brightness-90 ease-in-out duration-200',
+  base: 'rounded-xl text-white text-sm font-semibold px-2.5 py-4 antiliased hover:brightness-90 ease-in-out duration-200 outline-none',
   variants: {
     color: {
       primary: 'bg-primary-500 text-white',
