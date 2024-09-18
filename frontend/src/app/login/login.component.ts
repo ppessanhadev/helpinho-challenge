@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+
 import { UserService } from '@/services/user.service';
 import { HeaderComponent } from '@/components/Header/header.component';
 import { FooterComponent } from '@/components/Footer/footer.component';
@@ -27,5 +28,10 @@ import { HomeBannerLoggedComponent } from '@/components/HomeBannerLogged/home-ba
 export class LoginComponent {
   readonly logged = this.userSignal.select('logged');
 
-  constructor(private userSignal: UserService) {}
+  constructor(
+    private userSignal: UserService,
+    private router: Router,
+  ) {
+    if (this.logged()) this.router.navigate(['/']);
+  }
 }

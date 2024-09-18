@@ -28,4 +28,8 @@ export class HeaderComponent {
     }
     return 'text-base text-neutral-400 font-semibold';
   }
+
+  public navigateToLogin() {
+    this.router.navigate(['login']);
+  }
 }

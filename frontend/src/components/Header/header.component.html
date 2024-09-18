@@ -16,7 +16,7 @@
         Registre-se <span class="hidden md:inline-block">grátis</span>
       </app-base-button>
 
-      <app-base-button> Login </app-base-button>
+      <app-base-button (click)="navigateToLogin()"> Login </app-base-button>
     } @else {
       <app-user-icon
         name="Olivia Ryem"
