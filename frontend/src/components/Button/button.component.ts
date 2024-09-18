@@ -3,7 +3,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { SvgIconComponent } from 'angular-svg-icon';
 
 const button = tv({
-  base: 'rounded-xl text-white text-sm font-semibold px-2.5 py-4 antiliased hover:brightness-90 ease-in-out duration-200 outline-none',
+  base: 'rounded-xl text-white text-sm font-semibold px-2.5 py-4 antiliased enabled:hover:brightness-90 ease-in-out duration-200 outline-none disabled:bg-neutral-100 disabled:text-neutral-200 disabled:fill-none disabled:stroke-neutral-200',
   variants: {
     color: {
       primary: 'bg-primary-500 text-white',
@@ -63,6 +63,7 @@ export class ButtonComponent implements OnInit {
   @Input() icon = '';
   @Input() prefix = '';
   @Input() suffix = '';
+  @Input() disabled = false;
   @Input() size: Sizes = 'md';
   @Input() color: Colors = 'primary';
 
