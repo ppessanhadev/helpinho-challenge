@@ -8,10 +8,9 @@ import { Component, Input } from '@angular/core';
   templateUrl: './input.component.html',
 })
 export class InputComponent {
-  @Input() type: 'text' | 'number' = 'text';
+  @Input() type: 'text' | 'number' | 'email' | 'password' = 'text';
   @Input() label?: string;
-  @Input() value?: string;
+  @Input() value?: string = '';
+  @Input() placeholder?: string = '';
   @Input() error?: string;
-  @Input() prefix?: string;
-  @Input() suffix?: string;
 }

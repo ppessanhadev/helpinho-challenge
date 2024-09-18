@@ -1,0 +1,17 @@
+<div class="inline-flex items-center">
+  <label class="flex items-center cursor-pointer relative">
+    <input
+      type="checkbox"
+      class="peer h-4 w-4 cursor-pointer transition-all appearance-none rounded border border-slate-300 checked:bg-slate-800 checked:border-slate-800"
+      id="check"
+      [value]="value"
+    />
+    <span
+      class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+    >
+      <svg-icon src="public/assets/check.svg" class="fill-slate-300" />
+    </span>
+  </label>
+
+  <label for="check" class="text-sm font-medium text-neutral-700 pl-2">{{ label }}</label>
+</div>

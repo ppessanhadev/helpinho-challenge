@@ -1,27 +1,15 @@
 import { Component } from '@angular/core';
+import { SvgIconComponent } from 'angular-svg-icon';
 import { Router, RouterOutlet } from '@angular/router';
 
 import { UserService } from '@/services/user.service';
-import { HeaderComponent } from '@/components/Header/header.component';
-import { FooterComponent } from '@/components/Footer/footer.component';
-import { HomeCardComponent } from '@/components/HomeCard/home-card.component';
-import { HomeBannerComponent } from '@/components/HomeBanner/home-banner.component';
-import { HomeStagesComponent } from '@/components/HomeStages/home-stages.component';
-import { HomeSearchComponent } from '@/components/HomeSearch/home-search.component';
-import { HomeBannerLoggedComponent } from '@/components/HomeBannerLogged/home-banner-logged.component';
+import { InputComponent } from '@/components/Input/input.component';
+import { CheckboxComponent } from '@/components/Checkbox/checkbox.component';
+import { ButtonComponent } from '../../components/Button/button.component';
 
 @Component({
   standalone: true,
-  imports: [
-    RouterOutlet,
-    HeaderComponent,
-    HomeBannerComponent,
-    HomeBannerLoggedComponent,
-    HomeStagesComponent,
-    HomeSearchComponent,
-    HomeCardComponent,
-    FooterComponent,
-  ],
+  imports: [RouterOutlet, SvgIconComponent, InputComponent, CheckboxComponent, ButtonComponent],
   providers: [UserService],
   templateUrl: './login.component.html',
 })
