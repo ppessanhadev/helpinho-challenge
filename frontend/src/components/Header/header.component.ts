@@ -15,7 +15,7 @@ import { UserIconComponent } from '@/components/UserIcon/user-icon.component';
   providers: [UserService],
 })
 export class HeaderComponent {
-  readonly logged = this.userSignal.select('user');
+  readonly logged = this.userSignal.select('logged');
 
   constructor(
     private router: Router,

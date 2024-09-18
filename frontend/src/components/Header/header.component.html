@@ -11,7 +11,7 @@
   </nav>
 
   <div class="flex gap-2">
-    @if (!logged) {
+    @if (!logged()) {
       <app-base-button color="primary-tonal">
         Registre-se <span class="hidden md:inline-block">grátis</span>
       </app-base-button>

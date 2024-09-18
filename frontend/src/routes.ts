@@ -8,8 +8,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    loadComponent: () =>
-      import('@/app/not-found/not-found.component').then((m) => m.NotFoundComponent),
-    pathMatch: 'full',
+    redirectTo: '/',
   },
 ];
