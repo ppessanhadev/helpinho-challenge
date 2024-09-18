@@ -1,7 +1,13 @@
-<main class="bg-texture w-full h-[850px] bg-no-repeat bg-cover bg-center">
-  <app-header />
+<main>
+  <section class="bg-texture w-full bg-no-repeat bg-cover bg-center">
+    <app-header />
 
-  <app-home-banner />
+    @if (!logged()) {
+      <app-home-banner />
+    } @else {
+      <app-home-banner-logged />
+    }
+  </section>
 
   <app-home-stages />
 

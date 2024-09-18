@@ -11,10 +11,20 @@
   </nav>
 
   <div class="flex gap-2">
-    <app-base-button color="primary-tonal">
-      Registre-se <span class="hidden md:inline-block">grátis</span>
-    </app-base-button>
+    @if (!logged) {
+      <app-base-button color="primary-tonal">
+        Registre-se <span class="hidden md:inline-block">grátis</span>
+      </app-base-button>
 
-    <app-base-button> Login </app-base-button>
+      <app-base-button> Login </app-base-button>
+    } @else {
+      <app-user-icon
+        name="Olivia Ryem"
+        email="olivia@untitledui.com"
+        [hideSm]="true"
+        class="flex"
+      />
+      <app-base-button icon="public/assets/log-out.svg" size="sm" />
+    }
   </div>
 </header>

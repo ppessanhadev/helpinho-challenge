@@ -1,0 +1,27 @@
+<div class="flex gap-2.5 items-center justify-center">
+  <figure class="w-8 h-8">
+    <img class="rounded-full" [src]="image" alt="Imagem do proprietario do card" />
+  </figure>
+
+  <div class="max-h-8">
+    @if (name) {
+      <h4
+        class="text-sm font-semibold"
+        [ngClass]="color === 'primary' ? 'text-neutral-700' : 'text-neutral-50'"
+        [ngClass]="{ 'hidden sm:block': hideSm }"
+      >
+        {{ name }}
+      </h4>
+    }
+
+    @if (email) {
+      <h6
+        class="text-xs font-normal"
+        [ngClass]="color === 'primary' ? 'text-neutral-600' : 'text-neutral-100'"
+        [ngClass]="{ 'hidden sm:block': hideSm }"
+      >
+        {{ email }}
+      </h6>
+    }
+  </div>
+</div>
