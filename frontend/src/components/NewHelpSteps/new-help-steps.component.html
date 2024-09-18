@@ -1,0 +1,87 @@
+<div class="w-fit border border-neutral-200 rounded-xl p-4 flex items-center mx-auto">
+  <div class="flex gap-3">
+    @if (step === 1) {
+      <app-base-button
+        icon="public/assets/papers.svg"
+        class="rounded-3xl shadow-md shadow-black/10"
+      />
+
+      <dl class="text-xs flex flex-col justify-center text-left">
+        <dd class="text-primary-500 font-bold leading-3">Passo 1/4</dd>
+        <dt class="text-base text-neutral-600">Categoria do helpinho</dt>
+      </dl>
+    } @else {
+      <app-base-button
+        icon="public/assets/papers.svg"
+        class="rounded-3xl text-primary-600"
+        [disabled]="true"
+      />
+    }
+  </div>
+
+  <hr class="w-0 h-8 border-l-2 mx-5" />
+
+  <div class="flex gap-3">
+    @if (step === 2) {
+      <app-base-button
+        icon="public/assets/pencil.svg"
+        class="rounded-3xl shadow-md shadow-black/10"
+      />
+
+      <dl class="text-xs flex flex-col justify-center text-left">
+        <dd class="text-primary-500 font-bold leading-3">Passo 2/4</dd>
+        <dt class="text-base text-neutral-600">Conhecendo o helpinho</dt>
+      </dl>
+    } @else {
+      <app-base-button
+        icon="public/assets/pencil.svg"
+        class="rounded-3xl text-primary-600"
+        [disabled]="true"
+      />
+    }
+  </div>
+
+  <hr class="w-0 h-8 border-l-2 mx-5" />
+
+  <div class="flex gap-3">
+    @if (step === 3) {
+      <app-base-button
+        icon="public/assets/coins.svg"
+        class="rounded-3xl shadow-md shadow-black/10"
+      />
+
+      <dl class="text-xs flex flex-col justify-center text-left">
+        <dd class="text-primary-500 font-bold leading-3">Passo 3/4</dd>
+        <dt class="text-base text-neutral-600">Metas do helpinho</dt>
+      </dl>
+    } @else {
+      <app-base-button
+        icon="public/assets/coins.svg"
+        class="rounded-3xl text-primary-600"
+        [disabled]="true"
+      />
+    }
+  </div>
+
+  <hr class="w-0 h-8 border-l-2 mx-5" />
+
+  <div class="flex gap-3">
+    @if (step === 4) {
+      <app-base-button
+        icon="public/assets/check-steps.svg"
+        class="rounded-3xl shadow-md shadow-black/10"
+      />
+
+      <dl class="text-xs flex flex-col justify-center text-left">
+        <dd class="text-primary-500 font-bold leading-3">Passo 4/4</dd>
+        <dt class="text-base text-neutral-600">Revisando</dt>
+      </dl>
+    } @else {
+      <app-base-button
+        icon="public/assets/check-steps.svg"
+        class="rounded-3xl text-primary-600"
+        [disabled]="true"
+      />
+    }
+  </div>
+</div>

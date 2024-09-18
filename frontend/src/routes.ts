@@ -23,6 +23,12 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'new-help',
+    loadComponent: () =>
+      import('@/app/new-help/new-help.component').then((m) => m.NewHelpComponent),
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     redirectTo: '/',
   },
