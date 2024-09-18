@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { Component, Input, signal, OnInit } from '@angular/core';
+import { Component, Input, signal, OnInit, OnDestroy } from '@angular/core';
 
 type TImagesInput = {
   path: string;
@@ -18,7 +18,7 @@ type TImagesInput = {
   imports: [SvgIconComponent, CommonModule],
   templateUrl: './carousel-image.component.html',
 })
-export class CarouselImageComponent implements OnInit {
+export class CarouselImageComponent implements OnInit, OnDestroy {
   @Input() initialPage: 0 | 1 = 0;
   @Input() images: TImagesInput[] = [
     {
@@ -47,6 +47,10 @@ export class CarouselImageComponent implements OnInit {
   public ngOnInit() {
     this.page.set(this.initialPage);
     this.autoChanger = setInterval(() => this.next(true), 10000);
+  }
+
+  public ngOnDestroy() {
+    this.clearAutoChanger();
   }
 
   public next(changer = false) {
