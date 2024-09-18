@@ -12,6 +12,12 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'register',
+    loadComponent: () =>
+      import('@/app/register/register.component').then((m) => m.RegisterComponent),
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     redirectTo: '/',
   },
