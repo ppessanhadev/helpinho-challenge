@@ -9,6 +9,7 @@ import { NewHelpStepsComponent } from '@/components/NewHelpSteps/new-help-steps.
 import { NewHelpFirstStepComponent } from '@/components/NewHelpFirstStep/new-help-first-step.component';
 import { NewHelpSecondStepComponent } from '@/components/NewHelpSecondStep/new-help-second-step.component';
 import { NewHelpThirdStepComponent } from '@/components/NewHelpThirdStep/new-help-third-step.component';
+import { NewHelpFourthStepComponent } from '@/components/NewHelpFourthStep/new-help-fourth-step.component';
 
 @Component({
   standalone: true,
@@ -20,6 +21,7 @@ import { NewHelpThirdStepComponent } from '@/components/NewHelpThirdStep/new-hel
     NewHelpFirstStepComponent,
     NewHelpSecondStepComponent,
     NewHelpThirdStepComponent,
+    NewHelpFourthStepComponent,
   ],
   providers: [UserService, HelpService],
   templateUrl: './new-help.component.html',

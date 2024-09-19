@@ -3,12 +3,11 @@ import { SvgIconComponent } from 'angular-svg-icon';
 
 import { HelpService, THelpKeys } from '@/services/help.service';
 import { InputComponent } from '@/components/Input/input.component';
-import { NewHelpStepsComponent } from '@/components/NewHelpSteps/new-help-steps.component';
 
 @Component({
   selector: '[secondStep]',
   standalone: true,
-  imports: [NewHelpStepsComponent, SvgIconComponent, InputComponent],
+  imports: [SvgIconComponent, InputComponent],
   templateUrl: './new-help-second-step.component.html',
 })
 export class NewHelpSecondStepComponent {
