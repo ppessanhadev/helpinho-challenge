@@ -7,6 +7,7 @@ import { HelpService } from '@/services/help.service';
 import { HeaderComponent } from '@/components/Header/header.component';
 import { NewHelpStepsComponent } from '@/components/NewHelpSteps/new-help-steps.componen';
 import { NewHelpFirstStepComponent } from '@/components/NewHelpFirstStep/new-help-first-step.component';
+import { NewHelpSecondStepComponent } from '@/components/NewHelpSecondStep/new-help-second-step.component';
 
 @Component({
   standalone: true,
@@ -16,6 +17,7 @@ import { NewHelpFirstStepComponent } from '@/components/NewHelpFirstStep/new-hel
     HeaderComponent,
     NewHelpStepsComponent,
     NewHelpFirstStepComponent,
+    NewHelpSecondStepComponent,
   ],
   providers: [UserService, HelpService],
   templateUrl: './new-help.component.html',
@@ -23,7 +25,6 @@ import { NewHelpFirstStepComponent } from '@/components/NewHelpFirstStep/new-hel
 export class NewHelpComponent implements OnDestroy {
   readonly logged = this.userSignal.select('logged');
   readonly step = this.helpSignal.select('step');
-  readonly selected = this.helpSignal.select('category');
 
   constructor(
     private userSignal: UserService,
@@ -50,5 +51,24 @@ export class NewHelpComponent implements OnDestroy {
       return this.helpSignal.decrement('step');
     }
     return this.router.navigate(['help']);
+  }
+
+  public disableButton() {
+    const selected = this.helpSignal.select('category');
+    const title = this.helpSignal.select('title');
+    const description = this.helpSignal.select('description');
+    const image = this.helpSignal.select('image');
+    const goal = this.helpSignal.select('goal');
+
+    switch (this.step()) {
+      case 1:
+        return !selected();
+      case 2:
+        return !(title() && description() && image());
+      case 3:
+        return !goal();
+      default:
+        return false;
+    }
   }
 }

@@ -10,6 +10,18 @@
       @case (1) {
         <div firstStep class="bg-white flex-1 rounded-xl p-6"></div>
       }
+
+      @case (2) {
+        <div secondStep class="bg-white flex-1 rounded-xl p-6"></div>
+      }
+
+      @case (3) {
+        <div thirdStep class="bg-white flex-1 rounded-xl p-6"></div>
+      }
+
+      @case (4) {
+        <div fourthStep class="bg-white flex-1 rounded-xl p-6"></div>
+      }
     }
 
     <div class="w-full flex justify-end gap-4 px-4 py-6 font-semibold">
@@ -23,7 +35,7 @@
       <button
         class="bg-primary-500 text-white rounded-md px-4 py-2.5 disabled:bg-primary-300 enanled:hover:brightness-90"
         (click)="handleContinue()"
-        [disabled]="!selected()"
+        [disabled]="disableButton()"
       >
         {{ step() > 3 ? "Publicar helpinho" : "Continuar" }}
       </button>

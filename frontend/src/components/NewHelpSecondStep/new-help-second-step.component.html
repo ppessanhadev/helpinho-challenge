@@ -1,0 +1,50 @@
+<dl class="max-w-[500px] mb-6">
+  <dt class="text-xl text-neutral-900 font-bold">Fale um pouco mais</dt>
+
+  <dd class="text-base text-neutral-700 font-light">
+    Escreva mais detalhes sobre seu helpinho, não economize nas palavras.
+  </dd>
+</dl>
+
+<form class="w-full flex flex-col gap-4 flex-wrap h-5/6">
+  <app-input
+    placeholder="Seu titulo aqui"
+    label="Titulo do helpinho"
+    type="text"
+    (changer)="onHandleTitle($event, 'title')"
+    [value]="title()"
+  />
+
+  <label
+    for="upload"
+    class="flex flex-col justify-center items-center border border-neutral-300 p-4 rounded-xl text-neutral-600 cursor-pointer"
+  >
+    <figure class="bg-neutral-100 border-4 border-neutral-50 rounded-full p-2 mb-3">
+      <svg-icon src="public/assets/upload-cloud.svg" />
+    </figure>
+
+    <p class="text-sm">
+      <strong class="text-primary-700">Selecione</strong> ou arraste uma foto para representar seu
+      helpinho
+    </p>
+    <p class="text-xs">SVG, PNG, JPG or GIF (max. 800 x 400)</p>
+  </label>
+
+  <input
+    type="file"
+    id="upload"
+    class="-z-10 opacity-0 absolute"
+    (change)="onHandleChange($event, 'image')"
+  />
+
+  <div class="flex flex-col flex-1">
+    <label for="description" class="text-sm font-medium pb-1.5 text-neutral-600">Descrição</label>
+    <textarea
+      id="description"
+      class="flex flex-col border border-neutral-300 p-4 rounded-xl text-neutral-600 w-full h-full resize-none outline-none min-h-40"
+      placeholder="Escreva a descrição do seu helpinho, não economize nas palavras"
+      (change)="onHandleChange($event, 'description')"
+      [value]="description()"
+    ></textarea>
+  </div>
+</form>

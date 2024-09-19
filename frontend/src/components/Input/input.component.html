@@ -6,9 +6,10 @@
   <input
     [type]="type"
     [name]="label"
-    [value]="value"
+    [attr.value]="value"
     [placeholder]="placeholder"
     [ngClass]="{ 'border-primary-500': error }"
+    (change)="handleChange($event)"
     class="min-h-11 border border-neutral-300 text-neutral-500 rounded-lg py-2.5 px-3.5 outline-none"
   />
 

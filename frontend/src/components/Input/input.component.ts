@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -13,4 +13,10 @@ export class InputComponent {
   @Input() value?: string = '';
   @Input() placeholder?: string = '';
   @Input() error?: string;
+  @Output() changer = new EventEmitter();
+
+  public handleChange(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    this.changer.emit(value);
+  }
 }
