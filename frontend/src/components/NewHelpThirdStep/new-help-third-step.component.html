@@ -1,0 +1,30 @@
+<dl class="max-w-[500px] mb-6">
+  <dt class="text-xl text-neutral-900 font-bold">Quanto você precisa?</dt>
+
+  <dd class="text-base text-neutral-700 font-light">
+    Defina a meta que você quer alcançar com seu helpinho
+  </dd>
+</dl>
+
+<ul class="w-full flex justify-center items-center gap-4 flex-wrap">
+  @for (opt of options; track opt; let i = $index) {
+    <li class="h-fit">
+      <button
+        class="px-12 py-4 border border-neutral-100 rounded-xl text-neutral-700 text-sm font-light"
+        (click)="onSelect(opt.goal)"
+        [ngClass]="{
+          'border-primary-500 border-2 font-semibold': opt.goal === selected(),
+        }"
+      >
+        <figure class="mb-3 flex justify-center items-center">
+          <svg-icon
+            [src]="opt.icon"
+            class="w-12 h-12"
+            [ngClass]="{ 'text-primary-500': opt.goal === selected() }"
+          />
+        </figure>
+        {{ opt.name }}
+      </button>
+    </li>
+  }
+</ul>

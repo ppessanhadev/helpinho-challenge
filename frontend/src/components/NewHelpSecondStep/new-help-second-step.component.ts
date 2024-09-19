@@ -3,7 +3,7 @@ import { SvgIconComponent } from 'angular-svg-icon';
 
 import { HelpService, THelpKeys } from '@/services/help.service';
 import { InputComponent } from '@/components/Input/input.component';
-import { NewHelpStepsComponent } from '@/components/NewHelpSteps/new-help-steps.componen';
+import { NewHelpStepsComponent } from '@/components/NewHelpSteps/new-help-steps.component';
 
 @Component({
   selector: '[secondStep]',

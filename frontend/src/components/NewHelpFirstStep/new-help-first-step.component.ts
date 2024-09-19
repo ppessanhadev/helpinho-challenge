@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 import { SvgIconComponent } from 'angular-svg-icon';
 
 import { HelpService, TCategory } from '@/services/help.service';
-import { NewHelpStepsComponent } from '@/components/NewHelpSteps/new-help-steps.componen';
 
 type TOptions = { name: string; icon: string; category: TCategory };
 
 @Component({
   selector: '[firstStep]',
   standalone: true,
-  imports: [NewHelpStepsComponent, SvgIconComponent, CommonModule],
+  imports: [SvgIconComponent, CommonModule],
   templateUrl: './new-help-first-step.component.html',
 })
 export class NewHelpFirstStepComponent {

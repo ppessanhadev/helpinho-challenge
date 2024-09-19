@@ -5,9 +5,10 @@ import { Router, RouterOutlet } from '@angular/router';
 import { UserService } from '@/services/user.service';
 import { HelpService } from '@/services/help.service';
 import { HeaderComponent } from '@/components/Header/header.component';
-import { NewHelpStepsComponent } from '@/components/NewHelpSteps/new-help-steps.componen';
+import { NewHelpStepsComponent } from '@/components/NewHelpSteps/new-help-steps.component';
 import { NewHelpFirstStepComponent } from '@/components/NewHelpFirstStep/new-help-first-step.component';
 import { NewHelpSecondStepComponent } from '@/components/NewHelpSecondStep/new-help-second-step.component';
+import { NewHelpThirdStepComponent } from '@/components/NewHelpThirdStep/new-help-third-step.component';
 
 @Component({
   standalone: true,
@@ -18,6 +19,7 @@ import { NewHelpSecondStepComponent } from '@/components/NewHelpSecondStep/new-h
     NewHelpStepsComponent,
     NewHelpFirstStepComponent,
     NewHelpSecondStepComponent,
+    NewHelpThirdStepComponent,
   ],
   providers: [UserService, HelpService],
   templateUrl: './new-help.component.html',

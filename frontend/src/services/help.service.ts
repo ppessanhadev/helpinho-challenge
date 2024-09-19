@@ -17,6 +17,6 @@ type THelpService = {
 export class HelpService extends BaseStoreService<THelpService> {
   constructor() {
     super();
-    this.setState({ category: null, step: 2, title: '', description: '', image: '', goal: 0 });
+    this.setState({ category: null, step: 3, title: '', description: '', image: '', goal: 0 });
   }
 }
