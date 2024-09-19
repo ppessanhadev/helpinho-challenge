@@ -10,6 +10,6 @@ type TUserService = {
 export class UserService extends BaseStoreService<TUserService> {
   constructor() {
     super();
-    this.setState({ logged: false });
+    this.setState({ logged: true });
   }
 }

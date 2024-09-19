@@ -22,11 +22,17 @@
           <li class="h-fit">
             <button
               class="px-12 py-4 border border-neutral-100 rounded-xl text-neutral-700 text-sm font-light"
-              (click)="selected.set(opt.category)"
-              [ngClass]="{ 'border-primary-500': opt.category === selected() }"
+              (click)="onSelect(opt.category)"
+              [ngClass]="{
+                'border-primary-500 border-2 font-semibold': opt.category === selected(),
+              }"
             >
               <figure class="mb-3 flex justify-center items-center">
-                <svg-icon [src]="opt.icon" class="w-12 h-12" />
+                <svg-icon
+                  [src]="opt.icon"
+                  class="w-12 h-12"
+                  [ngClass]="{ 'text-primary-500': opt.category === selected() }"
+                />
               </figure>
               {{ opt.name }}
             </button>
@@ -36,11 +42,18 @@
     </div>
 
     <div class="w-full flex justify-end gap-4 px-4 py-6 font-semibold">
-      <button class="bg-white border border-neutral-300 text-neutral-700 rounded-md px-4 py-2.5">
+      <button
+        class="bg-white border border-neutral-300 text-neutral-700 rounded-md px-4 py-2.5 hover:brightness-90"
+      >
         Cancelar
       </button>
 
-      <button class="bg-primary-500 text-white rounded-md px-4 py-2.5">Continuar</button>
+      <button
+        class="bg-primary-500 text-white rounded-md px-4 py-2.5 disabled:bg-primary-300 enanled:hover:brightness-90"
+        [disabled]="!selected()"
+      >
+        Continuar
+      </button>
     </div>
   </section>
 </main>

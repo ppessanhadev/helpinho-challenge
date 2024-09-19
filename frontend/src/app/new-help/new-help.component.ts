@@ -1,11 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { SvgIconComponent } from 'angular-svg-icon';
 import { Router, RouterOutlet } from '@angular/router';
 
 import { UserService } from '@/services/user.service';
 import { HeaderComponent } from '@/components/Header/header.component';
 import { NewHelpStepsComponent } from '@/components/NewHelpSteps/new-help-steps.componen';
-import { SvgIconComponent } from 'angular-svg-icon';
-import { CommonModule } from '@angular/common';
 
 type TCategories = 'games' | 'health' | 'music' | 'reform' | 'emergency' | 'hospital';
 type TOptions = { name: string; icon: string; category: TCategories };
@@ -36,5 +36,12 @@ export class NewHelpComponent {
     if (!this.logged()) {
       this.router.navigate(['/login']);
     }
+  }
+
+  public onSelect(opt: TCategories) {
+    if (this.selected() === opt) {
+      return this.selected.set(null);
+    }
+    this.selected.set(opt);
   }
 }
