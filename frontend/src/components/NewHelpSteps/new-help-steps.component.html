@@ -1,6 +1,6 @@
 <div class="w-fit border border-neutral-200 rounded-xl p-4 flex items-center mx-auto">
   <div class="flex gap-3">
-    @if (step === 1) {
+    @if (step() === 1) {
       <app-base-button
         icon="public/assets/papers.svg"
         class="rounded-3xl shadow-md shadow-black/10"
@@ -22,7 +22,7 @@
   <hr class="w-0 h-8 border-l-2 mx-5" />
 
   <div class="flex gap-3">
-    @if (step === 2) {
+    @if (step() === 2) {
       <app-base-button
         icon="public/assets/pencil.svg"
         class="rounded-3xl shadow-md shadow-black/10"
@@ -44,7 +44,7 @@
   <hr class="w-0 h-8 border-l-2 mx-5" />
 
   <div class="flex gap-3">
-    @if (step === 3) {
+    @if (step() === 3) {
       <app-base-button
         icon="public/assets/coins.svg"
         class="rounded-3xl shadow-md shadow-black/10"
@@ -66,7 +66,7 @@
   <hr class="w-0 h-8 border-l-2 mx-5" />
 
   <div class="flex gap-3">
-    @if (step === 4) {
+    @if (step() === 4) {
       <app-base-button
         icon="public/assets/check-steps.svg"
         class="rounded-3xl shadow-md shadow-black/10"

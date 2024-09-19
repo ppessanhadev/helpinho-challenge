@@ -1,15 +1,16 @@
-import { Component, Input } from '@angular/core';
-import { UserService } from '@/services/user.service';
+import { Component } from '@angular/core';
+import { HelpService } from '@/services/help.service';
 import { HeaderComponent } from '@/components/Header/header.component';
-import { ButtonComponent } from '../Button/button.component';
+import { ButtonComponent } from '@/components/Button/button.component';
 
 @Component({
   selector: 'app-new-help-steps',
   standalone: true,
   imports: [HeaderComponent, ButtonComponent],
-  providers: [UserService],
   templateUrl: './new-help-steps.component.html',
 })
 export class NewHelpStepsComponent {
-  @Input() step: 1 | 2 | 3 | 4 = 1;
+  readonly step = this.helpSignal.select('step');
+
+  constructor(private helpSignal: HelpService) {}
 }

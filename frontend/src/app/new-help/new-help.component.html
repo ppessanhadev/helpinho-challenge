@@ -6,53 +6,26 @@
   </section>
 
   <section class="w-full h-full flex flex-col px-12 py-2.5">
-    <div class="bg-white flex-1 rounded-xl p-6">
-      <dl class="max-w-[500px] mb-6">
-        <dt class="text-xl text-neutral-900 font-bold">
-          Em que categoria se encaixa seu helpinho?
-        </dt>
-
-        <dd class="text-base text-neutral-700 font-light">
-          Escolha pelo menos uma das categorias abaixo que represente seu helpinho.
-        </dd>
-      </dl>
-
-      <ul class="w-full flex gap-4 flex-wrap">
-        @for (opt of options; track opt) {
-          <li class="h-fit">
-            <button
-              class="px-12 py-4 border border-neutral-100 rounded-xl text-neutral-700 text-sm font-light"
-              (click)="onSelect(opt.category)"
-              [ngClass]="{
-                'border-primary-500 border-2 font-semibold': opt.category === selected(),
-              }"
-            >
-              <figure class="mb-3 flex justify-center items-center">
-                <svg-icon
-                  [src]="opt.icon"
-                  class="w-12 h-12"
-                  [ngClass]="{ 'text-primary-500': opt.category === selected() }"
-                />
-              </figure>
-              {{ opt.name }}
-            </button>
-          </li>
-        }
-      </ul>
-    </div>
+    @switch (step()) {
+      @case (1) {
+        <div firstStep class="bg-white flex-1 rounded-xl p-6"></div>
+      }
+    }
 
     <div class="w-full flex justify-end gap-4 px-4 py-6 font-semibold">
       <button
         class="bg-white border border-neutral-300 text-neutral-700 rounded-md px-4 py-2.5 hover:brightness-90"
+        (click)="handleBack()"
       >
-        Cancelar
+        {{ step() > 1 ? "Voltar" : "Cancelar" }}
       </button>
 
       <button
         class="bg-primary-500 text-white rounded-md px-4 py-2.5 disabled:bg-primary-300 enanled:hover:brightness-90"
+        (click)="handleContinue()"
         [disabled]="!selected()"
       >
-        Continuar
+        {{ step() > 3 ? "Publicar helpinho" : "Continuar" }}
       </button>
     </div>
   </section>

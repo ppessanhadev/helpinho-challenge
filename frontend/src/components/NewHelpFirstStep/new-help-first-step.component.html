@@ -1,0 +1,30 @@
+<dl class="max-w-[500px] mb-6">
+  <dt class="text-xl text-neutral-900 font-bold">Em que categoria se encaixa seu helpinho?</dt>
+
+  <dd class="text-base text-neutral-700 font-light">
+    Escolha pelo menos uma das categorias abaixo que represente seu helpinho.
+  </dd>
+</dl>
+
+<ul class="w-full flex gap-4 flex-wrap">
+  @for (opt of options; track opt) {
+    <li class="h-fit">
+      <button
+        class="px-12 py-4 border border-neutral-100 rounded-xl text-neutral-700 text-sm font-light"
+        (click)="onSelect(opt.category)"
+        [ngClass]="{
+          'border-primary-500 border-2 font-semibold': opt.category === selected(),
+        }"
+      >
+        <figure class="mb-3 flex justify-center items-center">
+          <svg-icon
+            [src]="opt.icon"
+            class="w-12 h-12"
+            [ngClass]="{ 'text-primary-500': opt.category === selected() }"
+          />
+        </figure>
+        {{ opt.name }}
+      </button>
+    </li>
+  }
+</ul>

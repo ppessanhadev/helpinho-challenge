@@ -1,47 +1,54 @@
-import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
 import { SvgIconComponent } from 'angular-svg-icon';
+import { Component, OnDestroy } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 import { UserService } from '@/services/user.service';
+import { HelpService } from '@/services/help.service';
 import { HeaderComponent } from '@/components/Header/header.component';
 import { NewHelpStepsComponent } from '@/components/NewHelpSteps/new-help-steps.componen';
-
-type TCategories = 'games' | 'health' | 'music' | 'reform' | 'emergency' | 'hospital';
-type TOptions = { name: string; icon: string; category: TCategories };
+import { NewHelpFirstStepComponent } from '@/components/NewHelpFirstStep/new-help-first-step.component';
 
 @Component({
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, NewHelpStepsComponent, SvgIconComponent, CommonModule],
-  providers: [UserService],
+  imports: [
+    RouterOutlet,
+    SvgIconComponent,
+    HeaderComponent,
+    NewHelpStepsComponent,
+    NewHelpFirstStepComponent,
+  ],
+  providers: [UserService, HelpService],
   templateUrl: './new-help.component.html',
 })
-export class NewHelpComponent {
+export class NewHelpComponent implements OnDestroy {
   readonly logged = this.userSignal.select('logged');
-  readonly options: TOptions[] = [
-    { name: 'Jogos', icon: 'public/assets/rocket.svg', category: 'games' },
-    { name: 'Saúde', icon: 'public/assets/heart.svg', category: 'health' },
-    { name: 'Música', icon: 'public/assets/headphones.svg', category: 'music' },
-    { name: 'Reforma', icon: 'public/assets/home.svg', category: 'reform' },
-    { name: 'Emergência', icon: 'public/assets/life-buoy.svg', category: 'emergency' },
-    { name: 'Hospitalar', icon: 'public/assets/activity.svg', category: 'hospital' },
-  ];
-
-  selected = signal<TCategories | null>(null);
+  readonly step = this.helpSignal.select('step');
+  readonly selected = this.helpSignal.select('category');
 
   constructor(
     private userSignal: UserService,
     private router: Router,
+    private helpSignal: HelpService,
   ) {
     if (!this.logged()) {
       this.router.navigate(['/login']);
     }
   }
 
-  public onSelect(opt: TCategories) {
-    if (this.selected() === opt) {
-      return this.selected.set(null);
+  ngOnDestroy() {
+    this.helpSignal.setState({ category: null, step: 1 });
+  }
+
+  public handleContinue() {
+    if (this.step() < 4) {
+      return this.helpSignal.increment('step');
     }
-    this.selected.set(opt);
+  }
+
+  public handleBack() {
+    if (this.step() > 1) {
+      return this.helpSignal.decrement('step');
+    }
+    return this.router.navigate(['help']);
   }
 }
