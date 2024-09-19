@@ -19,7 +19,7 @@ describe('AuthService()', () => {
     it('should return a jwt token', () => {
       const token = authService.generateToken({ id: randomUUID() });
 
-      expect(token).toMatchObject({ token: expect.any(String) });
+      expect(token).toMatchObject(expect.any(String));
     });
   });
 
@@ -98,7 +98,7 @@ describe('AuthService()', () => {
     it('should return a jwt token', () => {
       const id = randomUUID();
       const token = authService.generateToken({ id });
-      const authorization = `Bearer ${token.token}`;
+      const authorization = `Bearer ${token}`;
 
       const result = authService.validateToken(authorization);
 
