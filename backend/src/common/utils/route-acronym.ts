@@ -1,15 +1,21 @@
-import { applyDecorators, Controller } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { applyDecorators, Controller } from '@nestjs/common';
 
-const sanitizeTagName = (tagName: string) => {
-  const tags = tagName.split(' ').slice(0, -1);
-  const route = tags.map((tag) => tag.toLowerCase());
+const capitalize = (str: string) =>
+  str.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
 
-  return route.join('-');
+const getTagName = (route: string) => {
+  const names = route.split('-').join(' ');
+
+  return capitalize(names).concat(' Route');
 };
 
-export const RouteAcronym = (tagName: string) => {
-  const route = sanitizeTagName(tagName);
+/**
+ * @summary Applies @Controller() decorator and @ApiTagsDecorator
+ * @param route - Indicates the primary group routes. This should be kebab-case
+ */
+export const RouteAcronym = (route: string) => {
+  const tagName = getTagName(route);
 
   return applyDecorators(ApiTags(tagName), Controller(route));
 };

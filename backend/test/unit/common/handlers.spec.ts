@@ -33,13 +33,13 @@ describe('@RouteAcronym()', () => {
   });
 
   it('should execute decorator, sanitize route and return the current tag', () => {
-    const tagName = 'Test Acronym Tag';
+    const tagName = 'Test Acronym Route';
     const route = 'test-acronym';
 
-    RouteAcronym(tagName);
+    RouteAcronym(route);
 
-    expect(common.Controller).toHaveBeenCalledWith(route);
     expect(swagger.ApiTags).toHaveBeenCalledWith(tagName);
+    expect(common.Controller).toHaveBeenCalledWith(route);
   });
 });
 
