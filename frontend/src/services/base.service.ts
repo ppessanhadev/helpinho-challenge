@@ -1,7 +1,7 @@
 import { Signal, computed, signal } from '@angular/core';
 
 export class BaseStoreService<T> {
-  readonly state = signal({} as T);
+  protected state = signal({} as T);
 
   public select<K extends keyof T>(key: K): Signal<T[K]> {
     return computed(() => this.state()[key]);
@@ -13,5 +13,19 @@ export class BaseStoreService<T> {
 
   public setState(partialState: Partial<T>): void {
     this.state.update((currentValue) => ({ ...currentValue, ...partialState }));
+  }
+
+  public increment<K extends keyof T>(key: K) {
+    this.state.update((currentValue) => ({
+      ...currentValue,
+      [key]: (currentValue[key] as number) + 1,
+    }));
+  }
+
+  public decrement<K extends keyof T>(key: K) {
+    this.state.update((currentValue) => ({
+      ...currentValue,
+      [key]: (currentValue[key] as number) - 1,
+    }));
   }
 }
