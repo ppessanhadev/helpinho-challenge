@@ -1,27 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 import { UserService } from '@/services/user.service';
 import { HeaderComponent } from '@/components/Header/header.component';
 import { NewHelpStepsComponent } from '@/components/NewHelpSteps/new-help-steps.componen';
 import { SvgIconComponent } from 'angular-svg-icon';
+import { CommonModule } from '@angular/common';
+
+type TCategories = 'games' | 'health' | 'music' | 'reform' | 'emergency' | 'hospital';
+type TOptions = { name: string; icon: string; category: TCategories };
 
 @Component({
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, NewHelpStepsComponent, SvgIconComponent],
+  imports: [RouterOutlet, HeaderComponent, NewHelpStepsComponent, SvgIconComponent, CommonModule],
   providers: [UserService],
   templateUrl: './new-help.component.html',
 })
 export class NewHelpComponent {
   readonly logged = this.userSignal.select('logged');
-  readonly options = [
-    { name: 'Jogos', icon: 'public/assets/rocket.svg' },
-    { name: 'Saúde', icon: 'public/assets/heart.svg' },
-    { name: 'Música', icon: 'public/assets/headphones.svg' },
-    { name: 'Reforma', icon: 'public/assets/home.svg' },
-    { name: 'Emergência', icon: 'public/assets/life-buoy.svg' },
-    { name: 'Hospitalar', icon: 'public/assets/activity.svg' },
+  readonly options: TOptions[] = [
+    { name: 'Jogos', icon: 'public/assets/rocket.svg', category: 'games' },
+    { name: 'Saúde', icon: 'public/assets/heart.svg', category: 'health' },
+    { name: 'Música', icon: 'public/assets/headphones.svg', category: 'music' },
+    { name: 'Reforma', icon: 'public/assets/home.svg', category: 'reform' },
+    { name: 'Emergência', icon: 'public/assets/life-buoy.svg', category: 'emergency' },
+    { name: 'Hospitalar', icon: 'public/assets/activity.svg', category: 'hospital' },
   ];
+
+  selected = signal<TCategories | null>(null);
 
   constructor(
     private userSignal: UserService,
