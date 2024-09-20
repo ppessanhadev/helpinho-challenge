@@ -30,6 +30,7 @@
       "@validators/*": ["src/application/validators/*"],
       "@domain/*": ["src/domain/*"],
       "@repositories/*": ["src/infra/repositories/*"],
+      "@shared/*": ["src/common/shared/*"],
       "@core": ["src/core/index"],
       "@common": ["src/common/index"]
     }
