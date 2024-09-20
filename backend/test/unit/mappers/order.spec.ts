@@ -12,12 +12,12 @@ describe('createToOrderModel()', () => {
     };
 
     const uuid = randomUUID();
-    const model = createToOrderModel(body, uuid, 'image');
+    const model = createToOrderModel(body, uuid);
 
     expect(model).toStrictEqual({
       description: body.description,
       goal: body.goal,
-      image: 'image',
+      image: body.image.toString('base64'),
       title: body.title,
       user: {
         connect: { id: uuid },
