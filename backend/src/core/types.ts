@@ -29,10 +29,14 @@ export class DefaultExceptionResponse {
 
 export type JwtPayload = {
   id: string;
+  email: string;
+  name: string;
   exp: number;
   iat: number;
 };
 
 export type TokenPayload = {
   id: string;
+  email: string;
+  name: string;
 };

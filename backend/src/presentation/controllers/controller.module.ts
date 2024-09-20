@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { DummyControllerModule } from './dummy/module';
+import { UserControllerModule } from './user/module';
 
-@Module({ imports: [DummyControllerModule] })
+@Module({ imports: [UserControllerModule] })
 export class ControllerModule {}
