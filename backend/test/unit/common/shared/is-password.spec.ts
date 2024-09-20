@@ -17,7 +17,7 @@ describe('@IsPassword()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a password. Received: undefined',
+      'The field testProp must be a strong password. Received: undefined',
     );
   });
 
@@ -29,7 +29,7 @@ describe('@IsPassword()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a password. Received: blank string',
+      'The field testProp must be a strong password. Received: blank string',
     );
   });
 
@@ -41,7 +41,7 @@ describe('@IsPassword()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a password. Received: blank string',
+      'The field testProp must be a strong password. Received: blank string',
     );
   });
 
@@ -53,7 +53,7 @@ describe('@IsPassword()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a password. Received: Stron@1',
+      'The field testProp must be a strong password. Received: Stron@1',
     );
   });
 
@@ -65,7 +65,7 @@ describe('@IsPassword()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a password. Received: STRONG@1',
+      'The field testProp must be a strong password. Received: STRONG@1',
     );
   });
 
@@ -77,7 +77,7 @@ describe('@IsPassword()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a password. Received: strong@1',
+      'The field testProp must be a strong password. Received: strong@1',
     );
   });
 
@@ -89,7 +89,7 @@ describe('@IsPassword()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a password. Received: Strong@@',
+      'The field testProp must be a strong password. Received: Strong@@',
     );
   });
 
@@ -101,7 +101,7 @@ describe('@IsPassword()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a password. Received: Strong11',
+      'The field testProp must be a strong password. Received: Strong11',
     );
   });
 

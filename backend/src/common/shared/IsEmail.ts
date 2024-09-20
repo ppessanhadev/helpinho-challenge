@@ -10,7 +10,7 @@ const IsEmailDecorator = () =>
   IsValidEmail(
     {},
     {
-      message: ({ value, property }) => defaultMessage(value, property, 'email'),
+      message: ({ value, property }) => defaultMessage(value, property, 'valid email'),
     },
   );
 

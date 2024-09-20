@@ -16,7 +16,8 @@ const IsPasswordDecorator = () =>
       minUppercase: 1,
     },
     {
-      message: ({ value, property }) => defaultMessage(value, property, 'password'),
+      message: ({ value, property }) =>
+        defaultMessage(value, property, 'strong password'),
     },
   );
 

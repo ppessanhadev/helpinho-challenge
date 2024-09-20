@@ -17,7 +17,7 @@ describe('@IsEmail()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isEmail).toStrictEqual(
-      'The field testProp must be a email. Received: undefined',
+      'The field testProp must be a valid email. Received: undefined',
     );
   });
 
@@ -29,7 +29,7 @@ describe('@IsEmail()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isEmail).toStrictEqual(
-      'The field testProp must be a email. Received: blank string',
+      'The field testProp must be a valid email. Received: blank string',
     );
   });
 
@@ -41,7 +41,7 @@ describe('@IsEmail()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isEmail).toStrictEqual(
-      'The field testProp must be a email. Received: blank string',
+      'The field testProp must be a valid email. Received: blank string',
     );
   });
 
@@ -53,7 +53,7 @@ describe('@IsEmail()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isEmail).toStrictEqual(
-      'The field testProp must be a email. Received: johndoe',
+      'The field testProp must be a valid email. Received: johndoe',
     );
   });
 

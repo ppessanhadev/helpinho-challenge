@@ -16,7 +16,9 @@ describe('@IsCpf()', () => {
     const { isCpf } = errors[0].constraints;
 
     expect(errors).toHaveLength(1);
-    expect(isCpf).toStrictEqual('The field testProp must be a cpf. Received: undefined');
+    expect(isCpf).toStrictEqual(
+      'The field testProp must be a valid CPF. Received: undefined',
+    );
   });
 
   it('should fail when given cpf is blank spaces', async () => {
@@ -27,7 +29,7 @@ describe('@IsCpf()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isCpf).toStrictEqual(
-      'The field testProp must be a cpf. Received: blank string',
+      'The field testProp must be a valid CPF. Received: blank string',
     );
   });
 
@@ -39,7 +41,7 @@ describe('@IsCpf()', () => {
 
     expect(errors).toHaveLength(1);
     expect(isCpf).toStrictEqual(
-      'The field testProp must be a cpf. Received: blank string',
+      'The field testProp must be a valid CPF. Received: blank string',
     );
   });
 
@@ -50,7 +52,7 @@ describe('@IsCpf()', () => {
     const { isCpf } = errors[0].constraints;
 
     expect(errors).toHaveLength(1);
-    expect(isCpf).toStrictEqual('The field testProp must be a cpf. Received: 123');
+    expect(isCpf).toStrictEqual('The field testProp must be a valid CPF. Received: 123');
   });
 
   it('should pass when given cpf is correct', async () => {

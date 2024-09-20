@@ -14,10 +14,10 @@ export const IsCpfDecorator = () => {
       target: object.constructor,
       validator: {
         validate(value: any) {
-          return typeof value == 'string' && value.length == 11;
+          return typeof value == 'string' && (value.length == 11 || value.length == 14);
         },
-        defaultMessage(argument?: ValidationArguments) {
-          return defaultMessage(argument.value, argument.property, 'cpf');
+        defaultMessage({ property, value }: ValidationArguments) {
+          return defaultMessage(value, property, 'valid CPF');
         },
       },
     });
