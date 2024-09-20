@@ -9,8 +9,8 @@ beforeAll(async () => {
   const date = new Date('2022-12-25T08:30:00');
   vi.useFakeTimers({ now: date });
 
+  global.database = module.get<PrismaClient>(PrismaClient);
   global.app = app;
-  global.database = app.get<PrismaClient>(PrismaClient);
 });
 
 afterAll(async () => {

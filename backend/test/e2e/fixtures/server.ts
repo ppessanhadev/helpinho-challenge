@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe, VersioningType } from '@nestjs/common';
 import { resetTables } from './database';
-import { PrismaClient } from '@prisma/client';
 import { ControllerModule } from '@controllers/controller.module';
 import { HttpExceptionFilter, validationPipeOptions } from '@core';
+import { PrismaClient } from '@prisma/client';
 
 export const createTestingModule = async () => {
   return Test.createTestingModule({
     imports: [ControllerModule],
-    providers: [PrismaClient],
+    providers: [],
   }).compile();
 };
 

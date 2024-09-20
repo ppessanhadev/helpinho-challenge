@@ -9,6 +9,7 @@ beforeAll(async () => {
   vi.useFakeTimers({ now: date });
 
   global.app = app;
+  global.moduleRef = module;
 });
 
 afterAll(async () => {

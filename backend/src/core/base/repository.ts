@@ -2,12 +2,14 @@ import { randomUUID } from 'crypto';
 import { Injectable } from '@nestjs/common';
 import { PrismaClient, PrismaPromise } from '@prisma/client';
 
-export abstract class BaseRepository<TInput, TOutput> {
-  private database: PrismaClient;
+@Injectable()
+export abstract class Repository<TInput, TOutput> {
   private model: any;
 
-  constructor(databaseInstance: PrismaClient, modelName: keyof PrismaClient) {
-    this.database = databaseInstance;
+  constructor(
+    private database: PrismaClient,
+    modelName: keyof PrismaClient,
+  ) {
     this.model = this.database[modelName];
   }
 
