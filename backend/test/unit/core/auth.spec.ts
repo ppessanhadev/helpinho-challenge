@@ -17,7 +17,11 @@ describe('AuthService()', () => {
 
   describe('generateToken()', () => {
     it('should return a jwt token', () => {
-      const token = authService.generateToken({ id: randomUUID() });
+      const token = authService.generateToken({
+        id: randomUUID(),
+        name: 'John',
+        email: 'pablito@gmail.com',
+      });
 
       expect(token).toMatchObject(expect.any(String));
     });
@@ -97,7 +101,11 @@ describe('AuthService()', () => {
 
     it('should return a jwt token', () => {
       const id = randomUUID();
-      const token = authService.generateToken({ id });
+      const token = authService.generateToken({
+        id,
+        email: 'fake@email.com',
+        name: 'Joe vuetify',
+      });
       const authorization = `Bearer ${token}`;
 
       const result = authService.validateToken(authorization);
@@ -106,6 +114,8 @@ describe('AuthService()', () => {
         id,
         exp: expect.any(Number),
         iat: expect.any(Number),
+        email: 'fake@email.com',
+        name: 'Joe vuetify',
       });
     });
   });

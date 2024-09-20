@@ -21,8 +21,8 @@ export class AuthService {
     return token;
   }
 
-  public generateToken({ id }: TokenPayload) {
-    const payload = { id };
+  public generateToken({ id, name, email }: TokenPayload) {
+    const payload = { id, name, email };
     const token = this.jwtService.sign(payload);
 
     return token;
