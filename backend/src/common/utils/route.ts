@@ -1,10 +1,12 @@
-import { HttpCode, UsePipes, applyDecorators } from '@nestjs/common';
+import { HttpCode, UseInterceptors, UsePipes, applyDecorators } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { RouteOption } from '../types';
-import { BearerAuth } from '../handlers/bearer';
-import { baseMethod } from '../handlers/method';
-import { ApiResponses } from '../handlers/validation-response';
-import { OptionalApiBody } from '../handlers/optional-api-body';
+import {
+  RouteOption,
+  baseMethod,
+  OptionalApiBody,
+  ApiResponses,
+  BearerAuth,
+} from '@common';
 
 export const Route = (option: RouteOption) => {
   const { method, summary, body, response } = option;
@@ -14,6 +16,7 @@ export const Route = (option: RouteOption) => {
   const pipes = option.pipes || [];
   const description =
     option.description || `Default success response for ${method} method`;
+  const interceptors = option.interceptors || [];
   const errors = option.errors || [];
 
   return applyDecorators(
@@ -24,6 +27,7 @@ export const Route = (option: RouteOption) => {
     ApiResponse({ type: response, status: code, description }),
     ...ApiResponses(errors, method),
     UsePipes(...pipes),
+    UseInterceptors(...interceptors),
     ...BearerAuth(option.isAuth),
   );
 };

@@ -1,4 +1,4 @@
-import { PipeTransform, Type } from '@nestjs/common';
+import { NestInterceptor, PipeTransform, Type } from '@nestjs/common';
 
 export type ApiType = string | (() => void) | Type<unknown> | [() => void] | undefined;
 
@@ -12,6 +12,7 @@ export type RouteOption = {
   body?: ApiType;
   response?: ApiType;
   pipes?: Array<PipeTransform>;
+  interceptors?: Array<Type<NestInterceptor<any, any>>>;
   isAuth?: boolean;
 };
 
