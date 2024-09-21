@@ -18,7 +18,7 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true,
-    "types": ["vitest/globals"],
+    "types": ["vitest/globals", "node", "express", "multer"],
     "paths": {
       "@controllers/*": ["src/presentation/controllers/*"],
       "@presenters/*": ["src/presentation/presenters/*"],
