@@ -33,7 +33,7 @@
       <app-base-button [routerLink]="['/login']"> Login </app-base-button>
     } @else {
       <app-user-icon [name]="user()" [email]="email()" [hideSm]="true" class="flex" />
-      <app-base-button icon="public/assets/log-out.svg" size="sm" />
+      <app-base-button icon="public/assets/log-out.svg" size="sm" (clicker)="handleLogout()" />
     }
   </div>
 </header>

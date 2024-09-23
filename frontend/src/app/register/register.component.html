@@ -13,20 +13,60 @@
       </article>
 
       <form class="max-w-[420px] w-full">
-        <app-input label="Nome*" type="text" placeholder="Como podemos lhe chamar" />
-        <app-input label="Email*" type="email" placeholder="Escreva seu melhor email" />
+        @if (errorOnRegister) {
+          <p
+            class="text-center bg-primary-500 font-bold text-white rounded-lg border-2 border-primary-700 p-1 mb-1"
+          >
+            {{ errorOnRegister }}
+          </p>
+        }
+
+        <app-input
+          label="Nome*"
+          type="text"
+          placeholder="Como podemos lhe chamar"
+          [error]="getError('name')"
+          [control]="getControl('name')"
+        />
+        <app-input
+          label="Email*"
+          type="email"
+          placeholder="Escreva seu melhor email"
+          [error]="getError('email')"
+          [control]="getControl('email')"
+        />
         <div class="grid grid-cols-2 gap-5">
-          <app-input label="CPF*" mask="000.000.000-00" type="text" placeholder="000.000.000-00" />
+          <app-input
+            label="CPF*"
+            mask="000.000.000-00"
+            type="text"
+            placeholder="000.000.000-00"
+            [error]="getError('cpf')"
+            [control]="getControl('cpf')"
+          />
           <app-input
             label="Data de nascimento*"
-            mask="00/00/0000"
+            mask="d0/M0/0000"
             type="text"
+            [error]="getError('birthday')"
+            [control]="getControl('birthday')"
             placeholder="00/00/0000"
           />
         </div>
-        <app-input label="Senha*" type="password" placeholder="Coloque sua senha" />
+        <app-input
+          label="Senha*"
+          type="password"
+          placeholder="Coloque sua senha"
+          [error]="getError('password')"
+          [control]="getControl('password')"
+        />
 
-        <app-base-button class="w-full mb-4 rounded-lg"> Cadastre-se grátis </app-base-button>
+        <app-base-button
+          class="w-full mb-4 rounded-lg"
+          [disabled]="form.status.toLowerCase() === 'invalid'"
+        >
+          Cadastre-se grátis
+        </app-base-button>
         <app-base-button
           class="w-full [&>button]:mb-8 rounded-lg bg-transparent text-neutral-700 [&>button]:border [&>button]:border-neutral-300 flex justify-center items-center opacity-60 cursor-not-allowed"
           prefix="public/assets/google-logo.svg"

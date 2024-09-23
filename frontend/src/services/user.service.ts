@@ -1,5 +1,6 @@
 import { firstValueFrom } from 'rxjs';
-import { jwtDecode } from 'jwt-decode';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -15,8 +16,16 @@ type TUserService = {
 
 @Injectable({ providedIn: 'root' })
 export class UserService extends BaseStoreService<TUserService> {
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {
     super();
+  }
+
+  private reset() {
+    localStorage.removeItem('token');
+    this.setState({ email: '', id: '', name: '', logged: false });
   }
 
   public async login(body: TLogin) {
@@ -31,6 +40,11 @@ export class UserService extends BaseStoreService<TUserService> {
     } catch (e) {
       return { error: true };
     }
+  }
+
+  public async logout() {
+    this.reset();
+    await this.router.navigate(['']);
   }
 
   public async register(body: TRegister) {
@@ -48,22 +62,17 @@ export class UserService extends BaseStoreService<TUserService> {
   }
 
   public setAccount(token?: string) {
+    const helper = new JwtHelperService();
     const storage = localStorage.getItem('token') || token;
 
     if (!storage) {
       throw new Error();
     }
 
-    const { id, name, email, exp } = jwtDecode<{
-      id: string;
-      name: string;
-      email: string;
-      exp: number;
-    }>(storage);
+    const { id, name, email } = helper.decodeToken(storage);
 
-    if (exp > Date.now()) {
-      this.setState({ email: '', id: '', name: '', logged: false });
-      localStorage.removeItem('token');
+    if (helper.isTokenExpired(storage)) {
+      this.reset();
     } else {
       this.setState({ id, name, email, logged: true });
     }

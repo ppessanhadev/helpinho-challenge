@@ -25,10 +25,14 @@ export class HeaderComponent {
     private userSignal: UserService,
   ) {}
 
-  public selectedPath(path: string) {
+  protected selectedPath(path: string) {
     if (path === this.router.url) {
       return 'text-base text-primary-500 underline underline-offset-8 decoration-2 rounded font-semibold';
     }
     return 'text-base text-neutral-400 font-semibold disabled:opacity-50';
+  }
+
+  protected handleLogout() {
+    this.userSignal.logout();
   }
 }

@@ -26,7 +26,6 @@
     "angular-svg-icon": "17.0.0",
     "express": "^4.18.2",
     "http": "link:@angular/common/http",
-    "jwt-decode": "^4.0.0",
     "ngx-mask": "^18.0.0",
     "rxjs": "~7.8.0",
     "tailwind-variants": "^0.2.1",

@@ -5,7 +5,6 @@ import { UserService } from './user.service';
 export const canActivateLogged: CanActivateFn = () => {
   const router = inject(Router);
   const userService = inject(UserService);
-  userService.setAccount();
 
   if (!userService.select('logged')()) {
     return router.createUrlTree(['']);
@@ -17,7 +16,6 @@ export const canActivateLogged: CanActivateFn = () => {
 export const canActivateLogout: CanActivateFn = () => {
   const router = inject(Router);
   const userService = inject(UserService);
-  userService.setAccount();
 
   if (userService.select('logged')()) {
     return router.createUrlTree(['']);
