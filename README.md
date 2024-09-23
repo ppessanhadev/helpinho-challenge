@@ -110,7 +110,8 @@ O projeto em si foi desenvolvido utilizado o gerenciador de pacote pnpm, para in
 ## Considerações gerais e melhorias
 
 Incialmente, existiam diversos planos para aplicação em si seguindo o figma de maneira fiel a dark theme, ci/cd e páginas extras.
-Entretanto, pela extensividade do desafio e com a ausencia de tempo, muitos planos ficaram de foram, inclusive tornando a aplicação incompleta no atual momento.
+
+Entretanto, pela extensividade do desafio e com a ausencia de tempo, muitos planos ficaram de fora, inclusive tornando a aplicação incompleta no atual momento.
 
 Futuras implementações e melhorias:
   - `backend`:
