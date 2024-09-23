@@ -1,6 +1,7 @@
 import { AuthGuard } from '@nestjs/passport';
 import { Inject, Injectable, ExecutionContext } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { IncomingMessage } from 'http';
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
@@ -17,7 +18,8 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
     const { authorization } = request.headers;
 
-    this.authService.validateToken(authorization);
+    const response = this.authService.validateToken(authorization);
+    request.userId = response?.id;
 
     return super.canActivate(context);
   }

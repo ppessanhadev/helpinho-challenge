@@ -57,59 +57,38 @@ describe('@IsPassword()', () => {
     );
   });
 
-  it('should fail when given password does not have the minimum lowercase characters', async () => {
+  it('shouldn`t fail when given password does not have the minimum lowercase characters', async () => {
     testObject.testProp = 'STRONG@1';
 
     const errors = await validate(testObject);
-    const { isStrongPassword } = errors[0].constraints;
-
-    expect(errors).toHaveLength(1);
-    expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a strong password. Received: STRONG@1',
-    );
+    expect(errors).toHaveLength(0);
   });
 
-  it('should fail when given password does not have the minimum uppercase characters', async () => {
+  it('shouldn`t fail when given password does not have the minimum uppercase characters', async () => {
     testObject.testProp = 'strong@1';
 
     const errors = await validate(testObject);
-    const { isStrongPassword } = errors[0].constraints;
-
-    expect(errors).toHaveLength(1);
-    expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a strong password. Received: strong@1',
-    );
+    expect(errors).toHaveLength(0);
   });
 
-  it('should fail when given password does not have the minimum number characters', async () => {
+  it('shouldn`t fail when given password does not have the minimum number characters', async () => {
     testObject.testProp = 'Strong@@';
 
     const errors = await validate(testObject);
-    const { isStrongPassword } = errors[0].constraints;
-
-    expect(errors).toHaveLength(1);
-    expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a strong password. Received: Strong@@',
-    );
+    expect(errors).toHaveLength(0);
   });
 
-  it('should fail when given password does not have the minimum special characters', async () => {
+  it('shouldn`t fail when given password does not have the minimum special characters', async () => {
     testObject.testProp = 'Strong11';
 
     const errors = await validate(testObject);
-    const { isStrongPassword } = errors[0].constraints;
-
-    expect(errors).toHaveLength(1);
-    expect(isStrongPassword).toStrictEqual(
-      'The field testProp must be a strong password. Received: Strong11',
-    );
+    expect(errors).toHaveLength(0);
   });
 
   it('should pass when given text is correct', async () => {
     testObject.testProp = 'Strong@1';
 
     const errors = await validate(testObject);
-
     expect(errors).toHaveLength(0);
   });
 });

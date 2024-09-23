@@ -10,10 +10,10 @@ const IsPasswordDecorator = () =>
   IsStrongPassword(
     {
       minLength: 8,
-      minLowercase: 1,
-      minNumbers: 1,
-      minSymbols: 1,
-      minUppercase: 1,
+      minLowercase: 0,
+      minNumbers: 0,
+      minSymbols: 0,
+      minUppercase: 0,
     },
     {
       message: ({ value, property }) =>
