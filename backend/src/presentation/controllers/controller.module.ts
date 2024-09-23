@@ -1,10 +1,15 @@
 import { Module } from '@nestjs/common';
-import { UserControllerModule } from './user/module';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { ConfigModule } from '@nestjs/config';
+
+import { UserControllerModule } from './user/module';
+import { OrderControllerModule } from './order/module';
 
 @Module({
   imports: [
     UserControllerModule,
+    OrderControllerModule,
+    ConfigModule.forRoot({ isGlobal: true }),
     ThrottlerModule.forRoot([
       {
         name: 'short',

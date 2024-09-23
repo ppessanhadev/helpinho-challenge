@@ -15,5 +15,20 @@ model User {
   cpf      String   @db.Text
   birthday DateTime @db.Timestamptz()
 
+  orders Order[]
+
   @@map("users")
+}
+
+model Order {
+  id          String  @id @default(uuid()) @db.Uuid
+  title       String  @db.Text
+  image       String? @db.Text
+  description String  @db.Text
+  goal        Float   @db.DoublePrecision
+  userId      String  @db.Uuid
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("orders")
 }
