@@ -1,135 +1,133 @@
-![LBCA | Helpinho](/assets/header.svg)
+# Helpinho | LBCA Fullstack challenge
 
-![Projeto fictício! Seu código será usado apenas para avaliação, em hipótese alguma o usaremos internamente.](/assets/alert.svg)
+Essa aplicação tem como objetivo ser uma aplicação onde pessoas podem ajudar e pedir ajuda de forma monetáiria. Você pode se cadastrar e criar o seu helpinho, onde outras pessoas lhe darão todo o apoio que precisar.
 
-Helpinho é uma plataforma onde pessoas podem ajudar e pedir ajuda. Você pode se cadastrar e criar o seu helpinho, onde outras pessoas lhe darão todo o apoio que precisar.
+Ela foi desenvolvida como um monorepo, ou seja, possuí backend e frontend em conjunto.
 
-Você deve criar uma plataforma simples, sendo possível cadastrar-se, fazer login, criar um helpinho, ver todos os helpinhos criados, ver mais informações de um helpinho.
-Na tela com todos os helpinhos, deve ser possivel fazer buscas. Ordenação e filtros serão bem vindos.
+## Overview da aplicação
 
-Abaixo listamos todas funcionalidades que esperamos vê, bem como as stacks:
+Para o desenvolvimento geral, utilizei as principais ferramentas e conceitos:
+- [Typescript] como linguagem principal de desenvolvimento
+- [NestJS](https://docs.nestjs.com) para o desenvolvimento do backend
+- [Angular 17+](https://v17.angular.io/docs) para o desenvolvimento frontend
+- Backend foi projetado com arquitetura hexagonal e conceitos de SOLID e Clean Code visando o crescimento exponencial da aplicação
+- Pode ser rodada separadamente com [pnpm](https://pnpm.io)
 
-### FrontEnd:
+## Backend RESTFUL API
 
-- **Angular v17+**
-- **Tailwind**
+O Backend foi desenvolvido com [NestJS](https://nestjs.com), toda a lógica da aplicação está centralizada nele, sendo resposável por listar, criar, alterar e deletar usuários e helps.
 
-Use o angular na versão 17, ou mais recente. Sinta-se livre para usar libs e outros recursos que desejar. Todas as telas básicas estão no figma para que você possa desenvolvê-las, fique à vontade para criar mais telas caso considere necessário.
+Também tomei a liberdade de desnvolver a aplicação do backend utilizando conceitos de TDD para melhor garantia de funcionamento geral das implementações.
 
-Esperamos as funcionalidades:
+**Tecnologias utilizadas**
+- [Prisma ORM](https://www.prisma.io) para simplificar a comunicação com o banco de dados, criação de models e tabelas, utilizando o banco relacional [postgres](https://www.postgresql.org)
+- [@nestjs/swagger](https://docs.nestjs.com/openapi/introduction) para documentar as rotas da aplicação
+- [vitest](https://vitest.dev) para testes unitários e de intgração.
+- [superagent](https://www.npmjs.com/package/superagent) para testes e2e.
+- [Docker compose](https://docs.docker.com/compose/) para rodar o banco em containers
+- [serveless](https://www.serverless.com/framework/docs) para rodar a aplicação em um ambiente cloud simulando aws lambda
+- Lint com [ESlint](https://eslint.org/) + [Prettier](https://prettier.io/) para manter a consistencia do código
 
-1. **Página de Listagem de Helpinhos**:
+**Rotas**
 
-   - Listar todos os helpinhos criados.
-   - Função de pesquisa (opcional ter filtros e ordenação).
+Os dados que devem ser enviados e são opcionais podem ser vistos a partir da documentação gerada pelo Swagger em `/docs`
 
-2. **Página de Criação de Helpinho**:
+> **Usuários**
 
-   - Validação de formulário.
-   - Campos obrigatórios: foto, título, descrição, meta, nome do criador, categoria, prazo e informações bancárias.
-   - Confirmação de envio e redirecuionar para o helpinho criado.
+| **Método** | **Rota**            | **Auth** | **Parâmetro** | **Descrição**              |
+|--------|-----------------|------|-----------|--------------------------------------------|
+| POST   | /v1/users       | -    | -         | Cria um novo usuário                       |
+| POST   | /v1/users/login | -    | -         | Registra um novo usuário no banco de dados |
 
-3. **Página de Visualização de Helpinho**:
+>**Helps**
 
-   - Mostrar todos os dados não sensíveis do helpinho e do criador.
-   - Mostrar valores recebidos até o momento (opcional realtime).
+| Método | Rota       | Auth         | Parâmetro                  | Descrição                                   |
+|--------|------------|--------------|----------------------------|---------------------------------------------|
+| GET    | /v1/orders | Bearer token | page[number];<br/>limit[number] | Lista os helpinhos criados com paginação    |
+| POST   | /v1/orders | Bearer token | -                          | Registra um novo helpinho no banco de dados |
 
-4. **Página de Autenticação**:
 
-   - Tela de login e cadastro.
-   - Validação de formulário.
-   - Seguração de dados do usuário.
+**Arquitetura**
 
-### BackEnd:
+O Backend foi organizado e está divida nas seguintes camadas:
 
-- **Serverless** utilizando **AWS**
+- `presentation`: Responsável por conter tudo relacionado a fluxo de entrada e saída da aplicação, podendo incluir validações de entrada, tratativa de erro e segurança caso seja necessário.
+- `application`: Responsável por conter mapeadores, pipes para adptar dados e centralizar as regras de negocio em `use-cases`.
+- `domain`: Responsável por lidar com todas as entidades, validadores e schemas da aplicação.
+- `infra`: Responsável por conter e gerenciar comunicações externas, seja com banco de dados, com provedores como APIs externas e microserviços.
+- `shared`: Responsável por conter tud que pode ser compartilhado entre outras camadas, como tipagens, utilitários, custom decorators e etc.
 
-Esperamos as funcionalidades:
+**Como rodar o projeto**
 
-1. **CRUD de Usuário**:
+**OBS**: As aplicações foram desenvolvidas na versão v20 do node, então é necessário que mude sua versão.
 
-   - Nome, telefone, email e senha.
+A partir da raiz do projeto em seu terminal, siga os próximos passos para rodar a API localmente:
 
-2. **CRUD de Solicitação de Help**:
+**Rodando localmente**
 
-   - Imagem, meta, descrição, título e solicitante.
+1. `cd backend`
+2. `pnpm i`
+3. `cp .env.example .env`
+4. `docker-compose up -d`
+5. `pnpm start:dev`
 
-3. **CRUD de Help Realizado**:
+>> A aplicação estará rodando em http://localhost:4000
 
-   - Solicitação, valor e doador.
+**Rodando testes**
 
-## Instruções para a Aplicação
+```bash
+pnpm test:unit # para testes unitários
 
-1. **Clone o Repositório**:
+pnpm test:integration # para testes de integração
 
-   ```bash
-   git clone https://github.com/LBCA-TI/Helpinho.git
-   ```
+pnpm test:e2e # para testes e2e
+```
 
-2. **Desenvolva sua aplicação**
-   Dentro de cada pasta, `frontend` e `backend`, crie sua aplicação e documente o passo a passo para execução e uma breve explicação do seu desenvolvimento. Caso necessário, crie um outro arquivo .md na raíz, mas não altere este arquivo README.md
+## Frontend Angular 17+
 
-3. **Documente sua aplicação**
-   Crie uma breve documentação do seu código, explicando sua tomada de decisão e qualquer ponto que ache relevante documentar
+O Frontend foi construído usando [Angular 17+](https://v17.angular.io/docs), sendo responsável por consumir o backend, exigindo menos lógica possível, se importando mais com as regras de usuário da aplicação.
 
-4. **Teste sua aplicação** (opcional)
-   Garanta que sua aplicação irá funcionar corretamente, faça testes unitários para garatir que cada parte da sua aplicação está funcionando corretamente
+**Tecnologias utilizadas**
 
-## Links
+- Lint com [ESlint](https://eslint.org) para consistencia do código
+- [Tailwind](https://tailwindcss.com) para estilização das páginas de forma simplificada
+- [@auth0/angular-jwt](https://www.npmjs.com/package/@auth0/angular-jwt) para gerencimaneto login/logout da aplicação
+- [ngx-mask](https://www.npmjs.com/package/ngx-mask) para formatar visualmente os inputs para o usuário
 
-- **Figma**: [Link para o protótipo no Figma](https://www.figma.com/design/0E94SZ4NUCkU6Oc5er2jzK/Helpinho---Frontend-test?node-id=18-2022&t=FrRW3RVj9UYuqUwN-1)
-- **Serverless**: [Serverless framework website](https://www.serverless.com/)
-- **Angular**: [Angular framework website](https://angular.dev/)
-- **Tailwind**: [Tailwind website](https://tailwindcss.com/)
 
-## Sobre a Vaga
+**Rodando localmente**
 
-**Desenvolvedor Pleno Full Stack**
+**OBS**: As aplicações foram desenvolvidas na versão v20 do node, então é necessário que mude sua versão.
 
-Estamos em busca de um Desenvolvedor Pleno Full Stack talentoso e experiente e principalmente com muita garra, para se juntar ao nosso time. O candidato ideal deverá ter habilidades avançadas em desenvolvimento serverless e um sólido conhecimento das ferramentas e tecnologias listadas. Se você é apaixonado por criar soluções eficientes e escaláveis, essa oportunidade é para você!
+O projeto em si foi desenvolvido utilizado o gerenciador de pacote pnpm, para instalar, no seu terminal execute o comando `npm i -g pnpm`, e siga os próximos passos:
 
-### Nosso projeto
+1. `cd frontend`
+3. `pnpm install`
+6. `pnpm start`
 
-Descubra uma plataforma serverless descentralizada e multi-cliente que está redefinindo os limites da tecnologia! Projetada para empresas que buscam escalabilidade e eficiência, ela oferece uma infraestrutura robusta e flexível, permitindo que você se concentre na criação de soluções inovadoras. Com uma arquitetura aberta, a plataforma proporciona um ambiente fértil para desenvolvedores explorarem novas ideias e enfrentarem desafios técnicos de ponta.
-Junte-se a um projeto revolucionário que elimina a complexidade do gerenciamento de servidores, garante segurança robusta e reduz custos operacionais. Aqui, você terá a oportunidade de trabalhar com tecnologias de última geração e impulsionar o futuro da inovação. Venha transformar o mercado e criar soluções extraordinárias conosco!
+>> A aplicação estará rodando em http://localhost:4000
 
-### Responsabilidades:
+## Considerações gerais e melhorias
 
-- Desenvolver e manter aplicações utilizando **Node.js** e **Angular v17**.
-- Implementar e gerenciar funções **AWS Lambda** para soluções serverless.
-- Utilizar **AWS DynamoDB** para armazenamento de dados NoSQL.
-- Configurar e gerenciar filas de mensagens com **AWS SQS**.
-- Realizar consultas de dados com **AWS Athena**.
-- Desenvolver e dar manutenção em componentes responsivos e reutilizáveis.
-- Desenvolver interfaces usando **Tailwind** e **SCSS**, baseados em design no Figma.
-- Colaborar com a equipe de desenvolvimento para implementar padrões de desenvolvimento e melhores práticas.
-- Aplicar arquitetura orientada a eventos para construir sistemas desacoplados e escaláveis.
-- Utilizar conceitos de **Domain-Driven Design (DDD)** para a modelagem de domínios complexos.
-- Ser responsável pela manutenção do sistema em produção.
+Incialmente, existiam diversos planos para aplicação em si seguindo o figma de maneira fiel a dark theme, ci/cd e páginas extras.
+Entretanto, pela extensividade do desafio e com a ausencia de tempo, muitos planos ficaram de foram, inclusive tornando a aplicação incompleta no atual momento.
 
-### Requisitos:
+Futuras implementações e melhorias:
+  - `backend`:
+    - [ ] Rotas para Upload de imagem no bucket S3
+    - [ ] Rotas para efetuar doação
+    - [ ] CI/CD para deploy do ambiente em serveless
+  - `frontend`:
+    - [ ] Melhor consistencia de token e refresh token
+    - [ ] Integração com registro de usuário no backend
+    - [ ] Integração com criação de novo helpinho
+    - [ ] Adição de validadores para cadastro de novo helpinho
+    - [ ] Adição de prévia ao finalizar o cadastro
+    - [ ] Adição de visualização de cards criados no dashboard
+    - [ ] Integração para listar helpinho já criados e que receberam ajuda dos usuários
+    - [ ] Implementação de infinite loading + virtualização de conteúdo na home
+    - [ ] Adição de pagina de detalhes de helpinho e realização de doação em valor X
+    - [ ] Responsividade em todas as páginas (atualmente está apenas presente na landing page e dashboard)
+    - [ ] CI/CD do frontend em uma instância na AWS
+    - [ ] Dark theme
 
-- Experiência comprovada em desenvolvimento full stack utilizando **Node.js** e **Angular**.
-- Habilidades em **TailwindCSS** para estilização de interfaces.
-- Familiaridade com padrões de desenvolvimento de software.
-- Compreensão de conceitos de **Domain-Driven Design (DDD)**.
-- Capacidade de trabalhar de forma colaborativa em um ambiente ágil.
-- Boas práticas no desenvolvimento web (HTML, SCSS, TypeScript).
-
-### Diferenciais:
-
-- Experiência anterior em projetos utilizando todas as ferramentas listadas.
-- Habilidade em resolver problemas de forma criativa e eficiente.
-- Excelentes habilidades de comunicação e trabalho em equipe.
-- Experiência com testes unitários e integrados, garantindo a qualidade e a robustez das aplicações desenvolvidas.
-- Conhecimento em **Angular Signals** e gerenciamento de estado.
-
-### Desejável
-
-- Experiência com **AWS DynamoDB**, **AWS SQS** e **AWS Athena**.
-- Conhecimento prático em desenvolvimento Serverless com **AWS Lambda**.
-- Experiência com arquitetura orientada a eventos.
-- Habilidade para trabalhar em um ambiente ágil **(Scrum/Kanban)**.
-- Experiência com ferramentas de **CI/CD**.
-
-Se você possui o perfil descrito e está pronto para novos desafios, envie seu currículo e portfólio para o nosso e-mail de recrutamento. Venha fazer parte de uma equipe que valoriza a inovação e a excelência no desenvolvimento de software!
