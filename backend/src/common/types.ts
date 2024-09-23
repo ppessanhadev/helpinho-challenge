@@ -14,6 +14,7 @@ export type RouteOption = {
   pipes?: Array<PipeTransform>;
   interceptors?: Array<Type<NestInterceptor<any, any>>>;
   isAuth?: boolean;
+  isFile?: boolean;
 };
 
 export type CombineDecoratorOption = {

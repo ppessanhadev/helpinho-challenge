@@ -1,11 +1,13 @@
 import { HttpCode, UseInterceptors, UsePipes, applyDecorators } from '@nestjs/common';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiConsumes, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import {
   RouteOption,
   baseMethod,
   OptionalApiBody,
   ApiResponses,
   BearerAuth,
+  HasApiConsumes,
+  HasFileInterceptor,
 } from '@common';
 
 export const Route = (option: RouteOption) => {
@@ -23,7 +25,9 @@ export const Route = (option: RouteOption) => {
     baseMethod[method].type(route),
     HttpCode(code),
     ApiOperation({ summary }),
-    OptionalApiBody(body),
+    HasApiConsumes(option.isFile),
+    HasFileInterceptor(option.isFile),
+    OptionalApiBody(body, option.isFile),
     ApiResponse({ type: response, status: code, description }),
     ...ApiResponses(errors, method),
     UsePipes(...pipes),
