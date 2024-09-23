@@ -5,14 +5,14 @@
   <nav class="hidden" [ngClass]="{ ' md:block': !hideLinks }">
     <ul class="flex gap-4 lg:gap-[3.688rem]">
       <li>
-        <button [class]="selectedPath('/')" (click)="navigateTo('/')">Home</button>
+        <a [class]="selectedPath('/')" [routerLink]="['']">Home</a>
       </li>
 
       <li>
         @if (!logged()) {
           <button [class]="selectedPath('/search')" disabled>Pesquisa</button>
         } @else {
-          <button [class]="selectedPath('/helps')" disabled>Minha dashboard</button>
+          <button [class]="selectedPath('/helps')" [routerLink]="['/helps']">Meus helps</button>
         }
       </li>
 
@@ -26,11 +26,11 @@
 
   <div class="flex gap-2">
     @if (!logged()) {
-      <app-base-button color="primary-tonal">
+      <app-base-button color="primary-tonal" [routerLink]="['/register']">
         Registre-se <span class="hidden md:inline-block">grátis</span>
       </app-base-button>
 
-      <app-base-button (click)="navigateTo('login')"> Login </app-base-button>
+      <app-base-button [routerLink]="['/login']"> Login </app-base-button>
     } @else {
       <app-user-icon [name]="user()" [email]="email()" [hideSm]="true" class="flex" />
       <app-base-button icon="public/assets/log-out.svg" size="sm" />

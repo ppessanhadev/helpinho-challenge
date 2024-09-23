@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,7 @@ import { UserIconComponent } from '@/components/UserIcon/user-icon.component';
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
-  imports: [ButtonComponent, UserIconComponent, SvgIconComponent, CommonModule],
+  imports: [ButtonComponent, UserIconComponent, SvgIconComponent, CommonModule, RouterLink],
 })
 export class HeaderComponent {
   @Input() hideLinks?: boolean = false;
@@ -30,9 +30,5 @@ export class HeaderComponent {
       return 'text-base text-primary-500 underline underline-offset-8 decoration-2 rounded font-semibold';
     }
     return 'text-base text-neutral-400 font-semibold disabled:opacity-50';
-  }
-
-  public navigateTo(path: string) {
-    this.router.navigate([path]);
   }
 }
