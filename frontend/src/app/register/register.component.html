@@ -16,8 +16,13 @@
         <app-input label="Nome*" type="text" placeholder="Como podemos lhe chamar" />
         <app-input label="Email*" type="email" placeholder="Escreva seu melhor email" />
         <div class="grid grid-cols-2 gap-5">
-          <app-input label="CPF/CNPJ*" type="text" placeholder="000.000.000-00" />
-          <app-input label="Data de nascimento*" type="text" placeholder="00/00/0000" />
+          <app-input label="CPF*" mask="000.000.000-00" type="text" placeholder="000.000.000-00" />
+          <app-input
+            label="Data de nascimento*"
+            mask="00/00/0000"
+            type="text"
+            placeholder="00/00/0000"
+          />
         </div>
         <app-input label="Senha*" type="password" placeholder="Coloque sua senha" />
 
