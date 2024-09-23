@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
 
 import { UserService } from '@/services/user.service';
 import { HeaderComponent } from '@/components/Header/header.component';
@@ -10,14 +10,6 @@ import { HeaderComponent } from '@/components/Header/header.component';
   templateUrl: './helps.component.html',
 })
 export class HelpsComponent {
+  private userSignal = inject(UserService);
   readonly logged = this.userSignal.select('logged');
-
-  constructor(
-    private userSignal: UserService,
-    private router: Router,
-  ) {
-    if (!this.logged()) {
-      this.router.navigate(['/login']);
-    }
-  }
 }

@@ -1,5 +1,5 @@
 import { SvgIconComponent } from 'angular-svg-icon';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 import { UserService } from '@/services/user.service';
@@ -26,18 +26,12 @@ import { NewHelpFourthStepComponent } from '@/components/NewHelpFourthStep/new-h
   templateUrl: './new-help.component.html',
 })
 export class NewHelpComponent implements OnDestroy {
+  private router = inject(Router);
+  private userSignal = inject(UserService);
+  private helpSignal = inject(HelpService);
+
   readonly logged = this.userSignal.select('logged');
   readonly step = this.helpSignal.select('step');
-
-  constructor(
-    private userSignal: UserService,
-    private router: Router,
-    private helpSignal: HelpService,
-  ) {
-    if (!this.logged()) {
-      this.router.navigate(['/login']);
-    }
-  }
 
   ngOnDestroy() {
     this.helpSignal.setState({ category: null, step: 1 });
