@@ -1,6 +1,14 @@
 import { tv } from 'tailwind-variants';
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { SvgIconComponent } from 'angular-svg-icon';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+  EventEmitter,
+} from '@angular/core';
 
 const button = tv({
   base: 'rounded-xl text-white text-sm font-semibold px-2.5 py-4 antiliased enabled:hover:brightness-90 ease-in-out duration-200 outline-none disabled:bg-neutral-100 disabled:text-neutral-200 disabled:fill-none disabled:stroke-neutral-200',
@@ -67,11 +75,18 @@ export class ButtonComponent implements OnInit {
   @Input() size: Sizes = 'md';
   @Input() color: Colors = 'primary';
 
+  @Output() clicker = new EventEmitter();
+
   ngOnInit() {
     this.definedClass = button({
       size: this.icon ? `icon-${this.size}` : this.size,
       color: this.color,
       class: this.class,
     });
+  }
+
+  public handleClick(event: Event) {
+    event.preventDefault();
+    this.clicker.emit('');
   }
 }

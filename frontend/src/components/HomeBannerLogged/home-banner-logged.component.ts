@@ -6,13 +6,10 @@ import { SvgIconComponent } from 'angular-svg-icon';
   selector: 'app-home-banner-logged',
   standalone: true,
   imports: [SvgIconComponent],
-  providers: [UserService],
   templateUrl: './home-banner-logged.component.html',
 })
 export class HomeBannerLoggedComponent {
-  readonly user = this.userSignal.select('user');
+  readonly user = this.userSignal.select('name');
 
-  constructor(private userSignal: UserService) {
-    userSignal.setState({ user: 'Pablitous' });
-  }
+  constructor(private userSignal: UserService) {}
 }

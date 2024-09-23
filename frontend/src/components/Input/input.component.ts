@@ -1,10 +1,12 @@
-import { CommonModule } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
+// import { ControlValueAccessor, FormControl } from '@angular/forms';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgClass, NgIf, ReactiveFormsModule],
   templateUrl: './input.component.html',
 })
 export class InputComponent {
@@ -13,6 +15,7 @@ export class InputComponent {
   @Input() value?: string = '';
   @Input() placeholder?: string = '';
   @Input() error?: string;
+  @Input() control: FormControl = new FormControl();
   @Output() changer = new EventEmitter();
 
   public handleChange(event: Event) {

@@ -1,4 +1,4 @@
-<button [className]="definedClass" [disabled]="disabled">
+<button [className]="definedClass" [disabled]="disabled" (click)="handleClick($event)">
   @if (!icon && prefix) {
     <div class="h-6 w-6 mr-2">
       <svg-icon [src]="prefix" class="[&>svg]:w-6 [&>svg]:h-6 fill-white" />

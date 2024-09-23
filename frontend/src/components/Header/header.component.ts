@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { SvgIconComponent } from 'angular-svg-icon';
 
@@ -12,11 +13,12 @@ import { UserIconComponent } from '@/components/UserIcon/user-icon.component';
   standalone: true,
   templateUrl: './header.component.html',
   imports: [ButtonComponent, UserIconComponent, SvgIconComponent, CommonModule],
-  providers: [UserService],
 })
 export class HeaderComponent {
-  readonly logged = this.userSignal.select('logged');
   @Input() hideLinks?: boolean = false;
+  protected logged = this.userSignal.select('logged');
+  protected user = this.userSignal.select('name');
+  protected email = this.userSignal.select('email');
 
   constructor(
     private router: Router,

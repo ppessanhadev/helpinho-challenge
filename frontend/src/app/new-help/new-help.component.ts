@@ -23,7 +23,6 @@ import { NewHelpFourthStepComponent } from '@/components/NewHelpFourthStep/new-h
     NewHelpThirdStepComponent,
     NewHelpFourthStepComponent,
   ],
-  providers: [UserService, HelpService],
   templateUrl: './new-help.component.html',
 })
 export class NewHelpComponent implements OnDestroy {

@@ -9,11 +9,17 @@
       </li>
 
       <li>
-        <button [class]="selectedPath('/search')" disabled>Pesquisa</button>
+        @if (!logged()) {
+          <button [class]="selectedPath('/search')" disabled>Pesquisa</button>
+        } @else {
+          <button [class]="selectedPath('/helps')" disabled>Minha dashboard</button>
+        }
       </li>
 
       <li>
-        <button [class]="selectedPath('/about')" disabled>Sobre</button>
+        @if (!logged()) {
+          <button [class]="selectedPath('/about')" disabled>Sobre</button>
+        }
       </li>
     </ul>
   </nav>
@@ -26,12 +32,7 @@
 
       <app-base-button (click)="navigateTo('login')"> Login </app-base-button>
     } @else {
-      <app-user-icon
-        name="Olivia Ryem"
-        email="olivia@untitledui.com"
-        [hideSm]="true"
-        class="flex"
-      />
+      <app-user-icon [name]="user()" [email]="email()" [hideSm]="true" class="flex" />
       <app-base-button icon="public/assets/log-out.svg" size="sm" />
     }
   </div>

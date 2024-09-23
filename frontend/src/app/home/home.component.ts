@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { UserService } from '@/services/user.service';
 import { HeaderComponent } from '@/components/Header/header.component';
@@ -21,11 +21,9 @@ import { HomeBannerLoggedComponent } from '@/components/HomeBannerLogged/home-ba
     HomeCardComponent,
     FooterComponent,
   ],
-  providers: [UserService],
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
+  private userSignal = inject(UserService);
   readonly logged = this.userSignal.select('logged');
-
-  constructor(private userSignal: UserService) {}
 }

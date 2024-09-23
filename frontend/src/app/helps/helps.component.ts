@@ -7,7 +7,6 @@ import { HeaderComponent } from '@/components/Header/header.component';
 @Component({
   standalone: true,
   imports: [RouterOutlet, HeaderComponent],
-  providers: [UserService],
   templateUrl: './helps.component.html',
 })
 export class HelpsComponent {

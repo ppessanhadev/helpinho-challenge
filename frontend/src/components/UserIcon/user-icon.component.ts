@@ -9,7 +9,7 @@ import { SvgIconComponent } from 'angular-svg-icon';
   templateUrl: './user-icon.component.html',
 })
 export class UserIconComponent {
-  @Input() image?: string = 'public/assets/noise.png';
+  @Input() image?: string = 'public/assets/user-icon.png';
   @Input() name?: string = 'Usuário';
   @Input() email?: string;
   @Input() color?: 'primary' | 'secondary' = 'primary';
